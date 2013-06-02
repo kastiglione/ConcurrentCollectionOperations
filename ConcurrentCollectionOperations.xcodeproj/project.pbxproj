@@ -15,6 +15,9 @@
 		5588EEF4175BDF8B00196831 /* ConcurrentCollectionOperations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */; };
 		5588EEFA175BDF8B00196831 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588EEF8175BDF8B00196831 /* InfoPlist.strings */; };
 		5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; };
+		5588EF08175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */; };
+		5588EF09175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
+		5588EF0A175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,8 @@
 		5588EEF9175BDF8B00196831 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5588EEFB175BDF8B00196831 /* ConcurrentCollectionOperationsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcurrentCollectionOperationsTests.h; sourceTree = "<group>"; };
 		5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcurrentCollectionOperationsTests.m; sourceTree = "<group>"; };
+		5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ConcurrentCollectionOperations.h"; sourceTree = "<group>"; };
+		5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +117,8 @@
 			children = (
 				5588EEE6175BDF8B00196831 /* ConcurrentCollectionOperations.h */,
 				5588EEE7175BDF8B00196831 /* ConcurrentCollectionOperations.m */,
+				5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */,
+				5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */,
 				5588EEE0175BDF8B00196831 /* Supporting Files */,
 			);
 			path = ConcurrentCollectionOperations;
@@ -153,6 +160,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5588EF08175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5588EEE8175BDF8B00196831 /* ConcurrentCollectionOperations.m in Sources */,
+				5588EF09175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
+				5588EF0A175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
