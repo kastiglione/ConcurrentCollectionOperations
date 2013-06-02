@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef id (^CCOMapBlock)(id object);
-typedef BOOL (^CCOPredicateBlock)(id object);
+#import "ConcurrentCollectionOperations.h"
 
 @interface NSArray (ConcurrentCollectionOperations)
 

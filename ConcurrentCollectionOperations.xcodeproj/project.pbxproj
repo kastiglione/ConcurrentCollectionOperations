@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5588EEDA175BDF8B00196831 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED9175BDF8B00196831 /* Cocoa.framework */; };
 		5588EEE4175BDF8B00196831 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588EEE2175BDF8B00196831 /* InfoPlist.strings */; };
-		5588EEE8175BDF8B00196831 /* ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEE7175BDF8B00196831 /* ConcurrentCollectionOperations.m */; };
 		5588EEF0175BDF8B00196831 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EEEF175BDF8B00196831 /* SenTestingKit.framework */; };
 		5588EEF1175BDF8B00196831 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED9175BDF8B00196831 /* Cocoa.framework */; };
 		5588EEF4175BDF8B00196831 /* ConcurrentCollectionOperations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */; };
@@ -40,7 +39,6 @@
 		5588EEE3175BDF8B00196831 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5588EEE5175BDF8B00196831 /* ConcurrentCollectionOperations-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConcurrentCollectionOperations-Prefix.pch"; sourceTree = "<group>"; };
 		5588EEE6175BDF8B00196831 /* ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcurrentCollectionOperations.h; sourceTree = "<group>"; };
-		5588EEE7175BDF8B00196831 /* ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcurrentCollectionOperations.m; sourceTree = "<group>"; };
 		5588EEEE175BDF8B00196831 /* ConcurrentCollectionOperationsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentCollectionOperationsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5588EEEF175BDF8B00196831 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5588EEF7175BDF8B00196831 /* ConcurrentCollectionOperationsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConcurrentCollectionOperationsTests-Info.plist"; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				5588EEE6175BDF8B00196831 /* ConcurrentCollectionOperations.h */,
-				5588EEE7175BDF8B00196831 /* ConcurrentCollectionOperations.m */,
 				5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */,
 				5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */,
 				5588EEE0175BDF8B00196831 /* Supporting Files */,
@@ -271,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5588EEE8175BDF8B00196831 /* ConcurrentCollectionOperations.m in Sources */,
 				5588EF09175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ConcurrentCollectionOperations : NSObject
-
-@end
+typedef id (^CCOMapBlock)(id object);
+typedef BOOL (^CCOPredicateBlock)(id object);
