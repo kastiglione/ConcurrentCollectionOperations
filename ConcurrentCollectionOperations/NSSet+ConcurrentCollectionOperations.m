@@ -20,19 +20,16 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
-    NSFastEnumerationState state;
-    void *objectsMemory = calloc(self.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)objectsMemory;
-    [self countByEnumeratingWithState:&state objects:objects count:self.count];
+    NSArray *objects = [self allObjects];
 
-    __strong id *mapped = (__strong id*)objectsMemory;
+    __strong id *mapped = (__strong id*)calloc(self.count, sizeof(id));
     dispatch_apply(self.count, queue, ^(size_t i) {
         mapped[i] = mapBlock(objects[i]);
     });
 
     NSSet *result = [NSSet setWithObjects:mapped count:self.count];
 
-    free(objectsMemory);
+    free(mapped);
     return result;
 }
 
@@ -46,9 +43,9 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
 
-    NSFastEnumerationState state;
+    NSArray *objects = [self allObjects];
     __unsafe_unretained id *filtered = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    [self countByEnumeratingWithState:&state objects:filtered count:self.count];
+    [objects getObjects:filtered];
 
     __block NSUInteger filteredCount = 0;
     dispatch_apply(self.count, queue, ^(size_t i) {
