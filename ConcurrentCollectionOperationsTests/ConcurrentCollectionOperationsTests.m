@@ -61,7 +61,7 @@
     STAssertEqualObjects(filtered, vowels, @"Failed to perform dictionary vowel filter");
 }
 
-#pragma mark - NSArray
+#pragma mark - NSSet
 
 - (void)testSetExtendingMap {
     NSSet *mapped = [self.symbols cco_concurrentMap:^(NSString *symbol) {
