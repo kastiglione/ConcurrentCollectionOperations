@@ -14,15 +14,16 @@
 		5588EEF4175BDF8B00196831 /* ConcurrentCollectionOperations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */; };
 		5588EEFA175BDF8B00196831 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588EEF8175BDF8B00196831 /* InfoPlist.strings */; };
 		5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; };
-		5588EF08175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */; };
+		5588EF08175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5588EF09175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
 		5588EF0A175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
-		5588EF12175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF10175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h */; };
+		5588EF12175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF10175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5588EF13175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */; };
 		5588EF14175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */; };
-		5588EF17175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */; };
+		5588EF17175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5588EF18175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 		5588EF19175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
+		5588EF1A175C48E700196831 /* ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EEE6175BDF8B00196831 /* ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,7 @@
 				5588EF08175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h in Headers */,
 				5588EF12175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h in Headers */,
 				5588EF17175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h in Headers */,
+				5588EF1A175C48E700196831 /* ConcurrentCollectionOperations.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
