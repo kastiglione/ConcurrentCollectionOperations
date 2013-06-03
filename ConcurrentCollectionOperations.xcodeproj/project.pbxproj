@@ -25,6 +25,8 @@
 		5588EF19175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 		5588EF1A175C48E700196831 /* ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EEE6175BDF8B00196831 /* ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5588EF1C175C493B00196831 /* BlockTypedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF1B175C493A00196831 /* BlockTypedefs.h */; };
+		5588EF1E175C4AB400196831 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5588EF1D175C4AB400196831 /* README.md */; };
+		5588EF1F175C4AB400196831 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5588EF1D175C4AB400196831 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,7 @@
 		5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+ConcurrentCollectionOperations.h"; sourceTree = "<group>"; };
 		5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 		5588EF1B175C493A00196831 /* BlockTypedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTypedefs.h; sourceTree = "<group>"; };
+		5588EF1D175C4AB400196831 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,7 @@
 		5588EECC175BDF8B00196831 = {
 			isa = PBXGroup;
 			children = (
+				5588EF1D175C4AB400196831 /* README.md */,
 				5588EEDF175BDF8B00196831 /* ConcurrentCollectionOperations */,
 				5588EEF5175BDF8B00196831 /* ConcurrentCollectionOperationsTests */,
 				5588EED8175BDF8B00196831 /* Frameworks */,
@@ -256,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5588EEE4175BDF8B00196831 /* InfoPlist.strings in Resources */,
+				5588EF1E175C4AB400196831 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5588EEFA175BDF8B00196831 /* InfoPlist.strings in Resources */,
+				5588EF1F175C4AB400196831 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
