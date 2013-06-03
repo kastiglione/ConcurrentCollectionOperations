@@ -27,6 +27,18 @@
 		5588EF1C175C493B00196831 /* BlockTypedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF1B175C493A00196831 /* BlockTypedefs.h */; };
 		5588EF1E175C4AB400196831 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5588EF1D175C4AB400196831 /* README.md */; };
 		5588EF1F175C4AB400196831 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5588EF1D175C4AB400196831 /* README.md */; };
+		5588EF26175C4E4000196831 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EF25175C4E4000196831 /* Foundation.framework */; };
+		5588EF34175C4E4000196831 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EEEF175BDF8B00196831 /* SenTestingKit.framework */; };
+		5588EF36175C4E4000196831 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EF35175C4E4000196831 /* UIKit.framework */; };
+		5588EF37175C4E4000196831 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EF25175C4E4000196831 /* Foundation.framework */; };
+		5588EF3A175C4E4000196831 /* libConcurrentCollectionOperations-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EF24175C4E4000196831 /* libConcurrentCollectionOperations-iOS.a */; };
+		5588EF4A175C4EE900196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
+		5588EF4B175C4EEA00196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
+		5588EF4C175C4EED00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */; };
+		5588EF4D175C4EEE00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */; };
+		5588EF4E175C4EF100196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
+		5588EF4F175C4EF200196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
+		5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +49,26 @@
 			remoteGlobalIDString = 5588EED5175BDF8B00196831;
 			remoteInfo = ConcurrentCollectionOperations;
 		};
+		5588EF38175C4E4000196831 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5588EECD175BDF8B00196831 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5588EF23175C4E4000196831;
+			remoteInfo = "ConcurrentCollectionOperations-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5588EF22175C4E4000196831 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConcurrentCollectionOperations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +94,11 @@
 		5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 		5588EF1B175C493A00196831 /* BlockTypedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTypedefs.h; sourceTree = "<group>"; };
 		5588EF1D175C4AB400196831 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		5588EF24175C4E4000196831 /* libConcurrentCollectionOperations-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libConcurrentCollectionOperations-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5588EF25175C4E4000196831 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5588EF29175C4E4000196831 /* ConcurrentCollectionOperations-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ConcurrentCollectionOperations-iOS-Prefix.pch"; path = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-iOS-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		5588EF33175C4E4000196831 /* ConcurrentCollectionOperations-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConcurrentCollectionOperations-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5588EF35175C4E4000196831 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +117,25 @@
 				5588EEF0175BDF8B00196831 /* SenTestingKit.framework in Frameworks */,
 				5588EEF1175BDF8B00196831 /* Cocoa.framework in Frameworks */,
 				5588EEF4175BDF8B00196831 /* ConcurrentCollectionOperations.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5588EF21175C4E4000196831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5588EF26175C4E4000196831 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5588EF2F175C4E4000196831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5588EF34175C4E4000196831 /* SenTestingKit.framework in Frameworks */,
+				5588EF36175C4E4000196831 /* UIKit.framework in Frameworks */,
+				5588EF37175C4E4000196831 /* Foundation.framework in Frameworks */,
+				5588EF3A175C4E4000196831 /* libConcurrentCollectionOperations-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +158,8 @@
 			children = (
 				5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */,
 				5588EEEE175BDF8B00196831 /* ConcurrentCollectionOperationsTests.octest */,
+				5588EF24175C4E4000196831 /* libConcurrentCollectionOperations-iOS.a */,
+				5588EF33175C4E4000196831 /* ConcurrentCollectionOperations-iOSTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +169,8 @@
 			children = (
 				5588EED9175BDF8B00196831 /* Cocoa.framework */,
 				5588EEEF175BDF8B00196831 /* SenTestingKit.framework */,
+				5588EF25175C4E4000196831 /* Foundation.framework */,
+				5588EF35175C4E4000196831 /* UIKit.framework */,
 				5588EEDB175BDF8B00196831 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -149,6 +208,7 @@
 				5588EEE1175BDF8B00196831 /* ConcurrentCollectionOperations-Info.plist */,
 				5588EEE2175BDF8B00196831 /* InfoPlist.strings */,
 				5588EEE5175BDF8B00196831 /* ConcurrentCollectionOperations-Prefix.pch */,
+				5588EF29175C4E4000196831 /* ConcurrentCollectionOperations-iOS-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -227,6 +287,42 @@
 			productReference = 5588EEEE175BDF8B00196831 /* ConcurrentCollectionOperationsTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		5588EF23175C4E4000196831 /* ConcurrentCollectionOperations-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5588EF44175C4E4000196831 /* Build configuration list for PBXNativeTarget "ConcurrentCollectionOperations-iOS" */;
+			buildPhases = (
+				5588EF20175C4E4000196831 /* Sources */,
+				5588EF21175C4E4000196831 /* Frameworks */,
+				5588EF22175C4E4000196831 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ConcurrentCollectionOperations-iOS";
+			productName = "ConcurrentCollectionOperations-iOS";
+			productReference = 5588EF24175C4E4000196831 /* libConcurrentCollectionOperations-iOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5588EF32175C4E4000196831 /* ConcurrentCollectionOperations-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5588EF47175C4E4000196831 /* Build configuration list for PBXNativeTarget "ConcurrentCollectionOperations-iOSTests" */;
+			buildPhases = (
+				5588EF2E175C4E4000196831 /* Sources */,
+				5588EF2F175C4E4000196831 /* Frameworks */,
+				5588EF30175C4E4000196831 /* Resources */,
+				5588EF31175C4E4000196831 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5588EF39175C4E4000196831 /* PBXTargetDependency */,
+			);
+			name = "ConcurrentCollectionOperations-iOSTests";
+			productName = "ConcurrentCollectionOperations-iOSTests";
+			productReference = 5588EF33175C4E4000196831 /* ConcurrentCollectionOperations-iOSTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -250,6 +346,8 @@
 			targets = (
 				5588EED5175BDF8B00196831 /* ConcurrentCollectionOperations */,
 				5588EEED175BDF8B00196831 /* ConcurrentCollectionOperationsTests */,
+				5588EF23175C4E4000196831 /* ConcurrentCollectionOperations-iOS */,
+				5588EF32175C4E4000196831 /* ConcurrentCollectionOperations-iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,10 +371,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5588EF30175C4E4000196831 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		5588EEEC175BDF8B00196831 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		5588EF31175C4E4000196831 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -313,6 +431,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5588EF20175C4E4000196831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5588EF4A175C4EE900196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
+				5588EF4C175C4EED00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
+				5588EF4E175C4EF100196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5588EF2E175C4E4000196831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5588EF4B175C4EEA00196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
+				5588EF4D175C4EEE00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
+				5588EF4F175C4EF200196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
+				5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -320,6 +459,11 @@
 			isa = PBXTargetDependency;
 			target = 5588EED5175BDF8B00196831 /* ConcurrentCollectionOperations */;
 			targetProxy = 5588EEF2175BDF8B00196831 /* PBXContainerItemProxy */;
+		};
+		5588EF39175C4E4000196831 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5588EF23175C4E4000196831 /* ConcurrentCollectionOperations-iOS */;
+			targetProxy = 5588EF38175C4E4000196831 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -370,6 +514,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -397,6 +542,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
@@ -458,6 +604,70 @@
 			};
 			name = Release;
 		};
+		5588EF45175C4E4000196831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ConcurrentCollectionOperations_iOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-iOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5588EF46175C4E4000196831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ConcurrentCollectionOperations_iOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-iOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5588EF48175C4E4000196831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-iOS-Prefix.pch";
+				INFOPLIST_FILE = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5588EF49175C4E4000196831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-iOS-Prefix.pch";
+				INFOPLIST_FILE = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -487,6 +697,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		5588EF44175C4E4000196831 /* Build configuration list for PBXNativeTarget "ConcurrentCollectionOperations-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5588EF45175C4E4000196831 /* Debug */,
+				5588EF46175C4E4000196831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5588EF47175C4E4000196831 /* Build configuration list for PBXNativeTarget "ConcurrentCollectionOperations-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5588EF48175C4E4000196831 /* Debug */,
+				5588EF49175C4E4000196831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
