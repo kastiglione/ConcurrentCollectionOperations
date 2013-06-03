@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ConcurrentCollectionOperations.h"
+#import "BlockTypedefs.h"
 
 @interface NSArray (ConcurrentCollectionOperations)
 

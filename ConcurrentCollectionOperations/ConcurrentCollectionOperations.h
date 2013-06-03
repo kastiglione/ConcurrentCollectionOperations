@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Internet. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-typedef id (^CCOMapBlock)(id object);
-typedef BOOL (^CCOPredicateBlock)(id object);
+#import "NSArray+ConcurrentCollectionOperations.h"
+#import "NSDictionary+ConcurrentCollectionOperations.h"
+#import "NSSet+ConcurrentCollectionOperations.h"

@@ -24,6 +24,7 @@
 		5588EF18175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 		5588EF19175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 		5588EF1A175C48E700196831 /* ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EEE6175BDF8B00196831 /* ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5588EF1C175C493B00196831 /* BlockTypedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF1B175C493A00196831 /* BlockTypedefs.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 		5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+ConcurrentCollectionOperations.h"; sourceTree = "<group>"; };
 		5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
+		5588EF1B175C493A00196831 /* BlockTypedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTypedefs.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				5588EEE6175BDF8B00196831 /* ConcurrentCollectionOperations.h */,
+				5588EF1B175C493A00196831 /* BlockTypedefs.h */,
 				5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */,
 				5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */,
 				5588EF10175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h */,
@@ -176,6 +179,7 @@
 				5588EF12175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h in Headers */,
 				5588EF17175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h in Headers */,
 				5588EF1A175C48E700196831 /* ConcurrentCollectionOperations.h in Headers */,
+				5588EF1C175C493B00196831 /* BlockTypedefs.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
