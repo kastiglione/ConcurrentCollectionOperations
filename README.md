@@ -4,4 +4,3 @@
 2. Write README.
 3. Add benchmark target.
 4. Write more stressing tests?
-5. Add iOS test target.
