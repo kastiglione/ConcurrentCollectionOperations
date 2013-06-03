@@ -20,6 +20,9 @@
 		5588EF12175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF10175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h */; };
 		5588EF13175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */; };
 		5588EF14175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */; };
+		5588EF17175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */; };
+		5588EF18175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
+		5588EF19175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,8 @@
 		5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 		5588EF10175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ConcurrentCollectionOperations.h"; sourceTree = "<group>"; };
 		5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
+		5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+ConcurrentCollectionOperations.h"; sourceTree = "<group>"; };
+		5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +128,8 @@
 				5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */,
 				5588EF10175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h */,
 				5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */,
+				5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */,
+				5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */,
 				5588EEE0175BDF8B00196831 /* Supporting Files */,
 			);
 			path = ConcurrentCollectionOperations;
@@ -166,6 +173,7 @@
 			files = (
 				5588EF08175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h in Headers */,
 				5588EF12175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h in Headers */,
+				5588EF17175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +286,7 @@
 			files = (
 				5588EF09175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 				5588EF13175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
+				5588EF18175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +297,7 @@
 				5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
 				5588EF0A175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 				5588EF14175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
+				5588EF19175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

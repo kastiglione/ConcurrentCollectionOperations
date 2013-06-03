@@ -9,10 +9,12 @@
 #import "ConcurrentCollectionOperationsTests.h"
 #import "NSArray+ConcurrentCollectionOperations.h"
 #import "NSDictionary+ConcurrentCollectionOperations.h"
+#import "NSSet+ConcurrentCollectionOperations.h"
 
 @interface ConcurrentCollectionOperationsTests ()
 @property (strong, nonatomic) NSArray *numbers;
 @property (strong, nonatomic) NSDictionary *letters;
+@property (strong, nonatomic) NSSet *symbols;
 @end
 
 @implementation ConcurrentCollectionOperationsTests
@@ -20,6 +22,7 @@
 - (void)setUp {
     self.numbers = @[ @0, @1, @2, @3, @4, @5, @6, @7, @8, @9 ];
     self.letters = @{ @0: @"A", @1: @"B", @2: @"C", @3: @"D", @4: @"E" };
+    self.symbols = [NSSet setWithObjects:@".", @";", @",", @"=", @"*", nil];
 }
 
 #pragma mark - NSArray
@@ -56,6 +59,24 @@
     }];
     NSDictionary *vowels = @{ @0: @"A", @4: @"E" };
     STAssertEqualObjects(filtered, vowels, @"Failed to perform dictionary vowel filter");
+}
+
+#pragma mark - NSArray
+
+- (void)testSetExtendingMap {
+    NSSet *mapped = [self.symbols cco_concurrentMap:^(NSString *symbol) {
+        return [symbol stringByAppendingString:symbol];
+    }];
+    NSSet *extended = [NSSet setWithObjects:@"..", @";;", @",,", @"==", @"**", nil];
+    STAssertEqualObjects(mapped, extended, @"Failed to perform set extending map");
+}
+
+- (void)testSetDotFilter {
+    NSSet *filtered = [self.symbols cco_concurrentFilter:^BOOL (NSString *symbol) {
+        return [symbol isEqualToString:@"."];
+    }];
+    NSSet *dot = [NSSet setWithObject:@"."];
+    STAssertEqualObjects(filtered, dot, @"Failed for filter set for dot");
 }
 
 @end
