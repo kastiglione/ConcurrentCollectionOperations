@@ -12,71 +12,73 @@
 #import "NSSet+ConcurrentCollectionOperations.h"
 
 @interface ConcurrentCollectionOperationsTests ()
-@property (strong, nonatomic) NSArray *numbers;
-@property (strong, nonatomic) NSDictionary *letters;
-@property (strong, nonatomic) NSSet *symbols;
+@property (strong, nonatomic) NSArray *numbersArray;
+@property (strong, nonatomic) NSDictionary *numbersDictionary;
+@property (strong, nonatomic) NSSet *numbersSet;
+
+@property (strong, nonatomic) NSArray *doubledNumbers;
+@property (strong, nonatomic) NSArray *oddNumbers;
 @end
 
 @implementation ConcurrentCollectionOperationsTests
 
 - (void)setUp {
-    self.numbers = @[ @0, @1, @2, @3, @4, @5, @6, @7, @8, @9 ];
-    self.letters = @{ @0: @"A", @1: @"B", @2: @"C", @3: @"D", @4: @"E" };
-    self.symbols = [NSSet setWithObjects:@".", @";", @",", @"=", @"*", nil];
+    self.numbersArray = @[ @0, @1, @2, @3, @4, @5, @6, @7, @8, @9 ];
+    self.numbersDictionary = [NSDictionary dictionaryWithObjects:self.numbersArray forKeys:self.numbersArray];
+    self.numbersSet = [NSSet setWithArray:self.numbersArray];
+
+    self.doubledNumbers = @[ @0, @2, @4, @6, @8, @10, @12, @14, @16, @18 ];
+    self.oddNumbers = @[ @1, @3, @5, @7, @9 ];
 }
 
 #pragma mark - NSArray
 
 - (void)testArrayDoublingMap {
-    NSArray *mapped = [self.numbers cco_concurrentMap:^(NSNumber *number) {
+    NSArray *mapped = [self.numbersArray cco_concurrentMap:^(NSNumber *number) {
         return @(2 * number.unsignedIntegerValue);
     }];
-    NSArray *doubled = @[ @0, @2, @4, @6, @8, @10, @12, @14, @16, @18 ];
-    STAssertEqualObjects(mapped, doubled, @"Failed to perform array doubling map");
+    STAssertEqualObjects(mapped, self.doubledNumbers, @"Failed to perform array doubling map");
 }
 
-- (void)testArrayEvenFilter {
-    NSArray *filtered = [self.numbers cco_concurrentFilter:^BOOL (NSNumber *number) {
-        return number.unsignedIntegerValue % 2 == 0;
+- (void)testArrayOddFilter {
+    NSArray *filtered = [self.numbersArray cco_concurrentFilter:^BOOL (NSNumber *number) {
+        return number.unsignedIntegerValue % 2 == 1;
     }];
-    NSArray *evens = @[ @0, @2, @4, @6, @8 ];
-    STAssertEqualObjects(filtered, evens, @"Failed for filter array for evens");
+    STAssertEqualObjects(filtered, self.oddNumbers, @"Failed for filter array for odds");
 }
 
 #pragma mark - NSDictionary
 
-- (void)testDictionaryAppendingMap {
-    NSDictionary *mapped = [self.letters cco_concurrentMap:^(NSString *letter) {
-        return [letter stringByAppendingString:@"!"];
+- (void)testDictionaryDoublingMap {
+    NSDictionary *mapped = [self.numbersDictionary cco_concurrentMap:^(NSNumber *number) {
+        return @(2 * number.unsignedIntegerValue);
     }];
-    NSDictionary *appended = @{ @0: @"A!", @1: @"B!", @2: @"C!", @3: @"D!", @4: @"E!" };
-    STAssertEqualObjects(mapped, appended, @"Failed to perform dictionary appending map");
+    NSArray *mappedNumbers = [mapped.allValues sortedArrayUsingSelector:@selector(compare:)];
+    STAssertEqualObjects(mappedNumbers, self.doubledNumbers, @"Failed to perform dictionary doubling map");
 }
 
-- (void)testDictionaryVowelFilter {
-    NSDictionary *filtered = [self.letters cco_concurrentFilter:^BOOL (NSString *letter) {
-        return [@"AEIOU" rangeOfString:letter].location != NSNotFound;
+- (void)testDictionaryOddFilter {
+    NSDictionary *filtered = [self.numbersDictionary cco_concurrentFilter:^BOOL (NSNumber *number) {
+        return number.unsignedIntegerValue % 2 == 1;
     }];
-    NSDictionary *vowels = @{ @0: @"A", @4: @"E" };
-    STAssertEqualObjects(filtered, vowels, @"Failed to perform dictionary vowel filter");
+    NSArray *filteredNumbers = [filtered.allValues sortedArrayUsingSelector:@selector(compare:)];
+    STAssertEqualObjects(filteredNumbers, self.oddNumbers, @"Failed to filter dictionary for odds");
 }
 
 #pragma mark - NSSet
 
-- (void)testSetExtendingMap {
-    NSSet *mapped = [self.symbols cco_concurrentMap:^(NSString *symbol) {
-        return [symbol stringByAppendingString:symbol];
+- (void)testSetDoublingMap {
+    NSSet *mapped = [self.numbersSet cco_concurrentMap:^(NSNumber *number) {
+        return @(2 * number.unsignedIntegerValue);
     }];
-    NSSet *extended = [NSSet setWithObjects:@"..", @";;", @",,", @"==", @"**", nil];
-    STAssertEqualObjects(mapped, extended, @"Failed to perform set extending map");
+    STAssertEqualObjects(mapped, [NSSet setWithArray:self.doubledNumbers], @"Failed to perform set doubling map");
 }
 
-- (void)testSetDotFilter {
-    NSSet *filtered = [self.symbols cco_concurrentFilter:^BOOL (NSString *symbol) {
-        return [symbol isEqualToString:@"."];
+- (void)testSetOddFilter {
+    NSSet *filtered = [self.numbersSet cco_concurrentFilter:^BOOL (NSNumber *number) {
+        return number.unsignedIntegerValue % 2 == 1;
     }];
-    NSSet *dot = [NSSet setWithObject:@"."];
-    STAssertEqualObjects(filtered, dot, @"Failed for filter set for dot");
+    STAssertEqualObjects(filtered, [NSSet setWithArray:self.oddNumbers], @"Failed for filter set for odds");
 }
 
 @end
