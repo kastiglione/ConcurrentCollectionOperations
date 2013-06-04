@@ -3,9 +3,14 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "Concurrent map and filter on NSArray, NSDictionary, NSSet using GCD."
   s.description  = <<-DESC
-    This is a set of categories for performing concurrent map and filter operations on Foundation data structures, currently NSArray, NSDictionary, NSSet.
+    This is a set of categories for performing concurrent map and filter
+    operations on Foundation data structures, currently NSArray, NSDictionary,
+    NSSet.
 
-    Concurrency is achieved using Grand Central Dispatch's dispatch_apply. By default, operations are run on the default priority global concurrent queue (DISPATCH_QUEUE_PRIORITY_DEFAULT). The operations can be performed on any concurrent queue, see the category header files.
+    Concurrency is achieved using Grand Central Dispatch's dispatch_apply. By
+    default, operations are run on the default priority global concurrent queue
+    (DISPATCH_QUEUE_PRIORITY_DEFAULT). The operations can be performed on any
+    concurrent queue, see the category header files.
   DESC
   s.homepage     = "https://github.com/kastiglione/ConcurrentCollectionOperations"
   s.license      = 'MIT'
