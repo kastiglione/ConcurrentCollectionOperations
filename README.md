@@ -34,10 +34,9 @@ Filtering even numbers out of a dictionary:
 
 ### TODO
 
-1. Write podspec.
-2. Write header docs.
-3. Add benchmark target.
-4. Write heavier/stressing tests.
+1. Write header docs.
+1. Add benchmark target.
+1. Write heavier/stressing tests.
 
 ### License
 
