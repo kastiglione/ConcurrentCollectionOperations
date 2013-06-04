@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5545FD64175E9F9000AC003B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5545FD63175E9F9000AC003B /* LICENSE.txt */; };
 		5588EEDA175BDF8B00196831 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED9175BDF8B00196831 /* Cocoa.framework */; };
 		5588EEE4175BDF8B00196831 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588EEE2175BDF8B00196831 /* InfoPlist.strings */; };
 		5588EEF0175BDF8B00196831 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EEEF175BDF8B00196831 /* SenTestingKit.framework */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5545FD63175E9F9000AC003B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConcurrentCollectionOperations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5588EED9175BDF8B00196831 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5588EEDC175BDF8B00196831 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				5588EF1D175C4AB400196831 /* README.md */,
+				5545FD63175E9F9000AC003B /* LICENSE.txt */,
 				5588EEDF175BDF8B00196831 /* ConcurrentCollectionOperations */,
 				5588EEF5175BDF8B00196831 /* ConcurrentCollectionOperationsTests */,
 				5588EED8175BDF8B00196831 /* Frameworks */,
@@ -359,6 +362,7 @@
 			files = (
 				5588EEE4175BDF8B00196831 /* InfoPlist.strings in Resources */,
 				5588EF1E175C4AB400196831 /* README.md in Resources */,
+				5545FD64175E9F9000AC003B /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
