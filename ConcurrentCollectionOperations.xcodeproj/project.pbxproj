@@ -711,6 +711,7 @@
 				5588EF46175C4E4000196831 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5588EF47175C4E4000196831 /* Build configuration list for PBXNativeTarget "ConcurrentCollectionOperations-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -719,6 +720,7 @@
 				5588EF49175C4E4000196831 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
