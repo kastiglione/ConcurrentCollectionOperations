@@ -7,10 +7,9 @@ Pod::Spec.new do |s|
     operations on Foundation data structures, currently NSArray, NSDictionary,
     NSSet.
 
-    Concurrency is achieved using Grand Central Dispatch's dispatch_apply. By
-    default, operations are run on the default priority global concurrent queue
-    (DISPATCH_QUEUE_PRIORITY_DEFAULT). The operations can be performed on any
-    concurrent queue, see the category header files.
+    Concurrency is achieved using Grand Central Dispatch's (GCD) dispatch_apply.
+    By default, operations are run on the default priority global concurrent
+    queue. The operations can be performed on any concurrent queue.
   DESC
   s.homepage     = "https://github.com/kastiglione/ConcurrentCollectionOperations"
   s.license      = 'MIT'
