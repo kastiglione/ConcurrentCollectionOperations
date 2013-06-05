@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/kastiglione/ConcurrentCollectionOperations"
   s.license      = 'MIT'
   s.authors      = { "Dave Lee" => "dave@kastiglione.com", "Eloy Durán" => "eloy@fngtps.com", "Mateus Armando" => "seanlilmateus@yahoo.de" }
-  s.source       = { :git => "https://github.com/kastiglione/ConcurrentCollectionOperations.git", :tag => "v0.0.1" }
+  s.source       = { :git => "https://github.com/kastiglione/ConcurrentCollectionOperations.git", :tag => "v0.0.2" }
   s.source_files = 'ConcurrentCollectionOperations'
   s.requires_arc = true
 end
