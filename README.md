@@ -14,7 +14,7 @@ because we were unaware of an existing implementation.
 
 ### Examples
 
-These examples are taken from the tests.
+These examples are taken from the [tests](https://github.com/kastiglione/ConcurrentCollectionOperations/blob/master/ConcurrentCollectionOperationsTests/ConcurrentCollectionOperationsTests.m).
 
 Doubling the values of an array:
 
@@ -41,7 +41,7 @@ Filtering even numbers out of a dictionary:
 ### License
 
 Concurrent Collection Operations is released under the MIT License. See
-[LICENSE.md](https://github.com/kastiglione/ConcurrentCollectionOperations/blob/master/LICENSE.txt).
+[LICENSE.txt](https://github.com/kastiglione/ConcurrentCollectionOperations/blob/master/LICENSE.txt).
 
 ### Contributing
 
