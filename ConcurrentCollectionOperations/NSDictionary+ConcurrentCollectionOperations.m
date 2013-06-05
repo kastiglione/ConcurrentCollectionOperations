@@ -20,18 +20,18 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
+    void *values = calloc(self.count, sizeof(id));
     __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)values;
     [self getObjects:objects andKeys:keys];
 
-    __strong id *mapped = (__strong id *)calloc(self.count, sizeof(id));
+    __strong id *mapped = (__strong id *)values;
     dispatch_apply(self.count, queue, ^(size_t i) {
         mapped[i] = mapBlock(objects[i]);
     });
 
     NSDictionary *result = [NSDictionary dictionaryWithObjects:mapped forKeys:keys count:self.count];
 
-    free(mapped);
     free(objects);
     free(keys);
     return result;
