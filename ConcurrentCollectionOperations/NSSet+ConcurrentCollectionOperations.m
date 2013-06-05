@@ -20,16 +20,18 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
-    NSArray *objects = [self allObjects];
+    void *values = calloc(self.count, sizeof(id));
+    CFSetGetValues((__bridge CFSetRef)self, values);
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)values;
+    __strong id *mapped = (__strong id*)values;
 
-    __strong id *mapped = (__strong id*)calloc(self.count, sizeof(id));
     dispatch_apply(self.count, queue, ^(size_t i) {
         mapped[i] = mapBlock(objects[i]);
     });
 
     NSSet *result = [NSSet setWithObjects:mapped count:self.count];
 
-    free(mapped);
+    free(values);
     return result;
 }
 
@@ -43,9 +45,9 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
 
-    NSArray *objects = [self allObjects];
-    __unsafe_unretained id *filtered = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    [objects getObjects:filtered];
+    void *values = calloc(self.count, sizeof(id));
+    CFSetGetValues((__bridge CFSetRef)self, values);
+    __unsafe_unretained id *filtered = (__unsafe_unretained id *)values;
 
     __block NSUInteger filteredCount = 0;
     dispatch_apply(self.count, queue, ^(size_t i) {
@@ -63,7 +65,7 @@
         }
     }
 
-    free(filtered);
+    free(values);
     return result;
 }
 
