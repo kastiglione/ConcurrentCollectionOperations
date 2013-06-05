@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ConcurrentCollectionOperations"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Concurrent map and filter on NSArray, NSDictionary, NSSet using GCD."
   s.description  = <<-DESC
     This is a set of categories for performing concurrent map and filter
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/kastiglione/ConcurrentCollectionOperations"
   s.license      = 'MIT'
   s.authors      = { "Dave Lee" => "dave@kastiglione.com", "Eloy Durán" => "eloy@fngtps.com", "Mateus Armando" => "seanlilmateus@yahoo.de" }
-  s.source       = { :git => "https://github.com/kastiglione/ConcurrentCollectionOperations.git", :tag => "v0.0.2" }
+  s.source       = { :git => "https://github.com/kastiglione/ConcurrentCollectionOperations.git", :tag => "v#{s.version}" }
   s.source_files = 'ConcurrentCollectionOperations'
   s.requires_arc = true
 end
