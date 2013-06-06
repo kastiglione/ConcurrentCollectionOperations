@@ -7,6 +7,7 @@
 //
 
 #import "NSMapTable+ConcurrentCollectionOperations.h"
+#import <libkern/OSAtomic.h>
 
 @implementation NSMapTable (ConcurrentCollectionOperations)
 
@@ -27,7 +28,10 @@
     NSArray *objects = NSAllMapTableValues(self);
 	
     dispatch_apply(self.count, queue, ^(size_t i) {
-        [result setObject:mapBlock(objects[i]) forKey:keys[i]];
+		OSSpinLock spinlock = OS_SPINLOCK_INIT;
+		OSSpinLockLock(&spinlock);
+		[result setObject:mapBlock(objects[i]) forKey:keys[i]];
+		OSSpinLockUnlock(&spinlock);
     });
 	
     return result;
@@ -42,7 +46,7 @@
 
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
-
+	
     NSMapTable *result = NSCopyMapTableWithZone(self, NULL);
     NSResetMapTable(result);
 
@@ -51,7 +55,10 @@
 
     dispatch_apply(self.count, queue, ^(size_t i) {
         if (predicateBlock(objects[i])) {
+            OSSpinLock spinlock = OS_SPINLOCK_INIT;
+            OSSpinLockLock(&spinlock);
             [result setObject:objects[i] forKey:keys[i]];
+            OSSpinLockUnlock(&spinlock);
         }
     });
 
