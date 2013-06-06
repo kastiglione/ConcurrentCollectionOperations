@@ -28,10 +28,10 @@
     NSArray *objects = NSAllMapTableValues(self);
 	
     dispatch_apply(self.count, queue, ^(size_t i) {
-		OSSpinLock spinlock = OS_SPINLOCK_INIT;
-		OSSpinLockLock(&spinlock);
-		[result setObject:mapBlock(objects[i]) forKey:keys[i]];
-		OSSpinLockUnlock(&spinlock);
+        OSSpinLock spinlock = OS_SPINLOCK_INIT;
+        OSSpinLockLock(&spinlock);
+        [result setObject:mapBlock(objects[i]) forKey:keys[i]];
+        OSSpinLockUnlock(&spinlock);
     });
 	
     return result;
