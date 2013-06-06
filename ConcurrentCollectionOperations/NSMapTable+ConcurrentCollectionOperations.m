@@ -20,8 +20,8 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 	
-	NSMapTable *result = NSCopyMapTableWithZone(self, NULL);
-	NSResetMapTable(result);
+    NSMapTable *result = NSCopyMapTableWithZone(self, NULL);
+    NSResetMapTable(result);
 	
     NSArray *keys = NSAllMapTableKeys(self);
     NSArray *objects = NSAllMapTableValues(self);
@@ -42,19 +42,19 @@
 
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
-	
-	NSMapTable *result = NSCopyMapTableWithZone(self, NULL);
-	NSResetMapTable(result);
-	
+
+    NSMapTable *result = NSCopyMapTableWithZone(self, NULL);
+    NSResetMapTable(result);
+
     NSArray *keys = NSAllMapTableKeys(self);
     NSMutableArray *objects = NSAllMapTableValues(self).mutableCopy;
-	
+
     dispatch_apply(self.count, queue, ^(size_t i) {
         if (predicateBlock(objects[i])) {
             [result setObject:objects[i] forKey:keys[i]];
         }
     });
-    
+
     return result;
 }
 
