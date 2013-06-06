@@ -9,11 +9,13 @@
 #import "ConcurrentCollectionOperationsTests.h"
 #import "NSArray+ConcurrentCollectionOperations.h"
 #import "NSDictionary+ConcurrentCollectionOperations.h"
+#import "NSMapTable+ConcurrentCollectionOperations.h"
 #import "NSSet+ConcurrentCollectionOperations.h"
 
 @interface ConcurrentCollectionOperationsTests ()
 @property (strong, nonatomic) NSArray *numbersArray;
 @property (strong, nonatomic) NSDictionary *numbersDictionary;
+@property (strong, nonatomic) NSMapTable *numbersMapTable;
 @property (strong, nonatomic) NSSet *numbersSet;
 
 @property (strong, nonatomic) NSArray *doubledNumbers;
@@ -25,6 +27,11 @@
 - (void)setUp {
     self.numbersArray = @[ @0, @1, @2, @3, @4, @5, @6, @7, @8, @9 ];
     self.numbersDictionary = [NSDictionary dictionaryWithObjects:self.numbersArray forKeys:self.numbersArray];
+	NSPointerFunctionsOptions mapTableOptions = (NSPointerFunctionsStrongMemory | NSPointerFunctionsObjectPersonality);
+	self.numbersMapTable = [NSMapTable mapTableWithKeyOptions:mapTableOptions valueOptions:mapTableOptions];
+	for (NSNumber *number in self.numbersArray) {
+		[self.numbersMapTable setObject:number forKey:number];
+	}
     self.numbersSet = [NSSet setWithArray:self.numbersArray];
 
     self.doubledNumbers = @[ @0, @2, @4, @6, @8, @10, @12, @14, @16, @18 ];
@@ -62,6 +69,24 @@
         return number.unsignedIntegerValue % 2 == 1;
     }];
     NSArray *filteredNumbers = [filtered.allValues sortedArrayUsingSelector:@selector(compare:)];
+    STAssertEqualObjects(filteredNumbers, self.oddNumbers, @"Failed to filter dictionary for odds");
+}
+
+#pragma mark - NSMapTable
+
+- (void)testMapTableDoublingMap {
+    NSMapTable *mapped = [self.numbersMapTable cco_concurrentMap:^(NSNumber *number) {
+        return @(2 * number.unsignedIntegerValue);
+    }];
+    NSArray *mappedNumbers = [mapped.dictionaryRepresentation.allValues sortedArrayUsingSelector:@selector(compare:)];
+    STAssertEqualObjects(mappedNumbers, self.doubledNumbers, @"Failed to perform dictionary doubling map");
+}
+
+- (void)testMapTableOddFilter {
+    NSMapTable *filtered = [self.numbersMapTable cco_concurrentFilter:^BOOL (NSNumber *number) {
+        return number.unsignedIntegerValue % 2 == 1;
+    }];
+    NSArray *filteredNumbers = [filtered.dictionaryRepresentation.allValues sortedArrayUsingSelector:@selector(compare:)];
     STAssertEqualObjects(filteredNumbers, self.oddNumbers, @"Failed to filter dictionary for odds");
 }
 
