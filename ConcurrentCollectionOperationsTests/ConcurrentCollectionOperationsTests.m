@@ -11,6 +11,8 @@
 #import "NSDictionary+ConcurrentCollectionOperations.h"
 #import "NSSet+ConcurrentCollectionOperations.h"
 
+static const NSUInteger kMutableCollectionCount = 10;
+
 @interface ConcurrentCollectionOperationsTests ()
 @property (strong, nonatomic) NSArray *numbersArray;
 @property (strong, nonatomic) NSDictionary *numbersDictionary;
@@ -18,6 +20,8 @@
 
 @property (strong, nonatomic) NSArray *doubledNumbers;
 @property (strong, nonatomic) NSArray *oddNumbers;
+
+@property (strong, nonatomic) NSMutableArray *mutableObjectsArray;
 @end
 
 @implementation ConcurrentCollectionOperationsTests
@@ -29,6 +33,11 @@
 
     self.doubledNumbers = @[ @0, @2, @4, @6, @8, @10, @12, @14, @16, @18 ];
     self.oddNumbers = @[ @1, @3, @5, @7, @9 ];
+
+    self.mutableObjectsArray = [NSMutableArray arrayWithCapacity:kMutableCollectionCount];
+    for (NSUInteger i = 0; i < kMutableCollectionCount; ++i) {
+        [self.mutableObjectsArray addObject:[NSObject new]];
+    }
 }
 
 #pragma mark - NSArray
@@ -79,6 +88,60 @@
         return number.unsignedIntegerValue % 2 == 1;
     }];
     STAssertEqualObjects(filtered, [NSSet setWithArray:self.oddNumbers], @"Failed for filter set for odds");
+}
+
+#pragma mark - Concurrent with Mutation
+
+- (void)testArrayMapConcurrentWithMutation {
+    NSArray *mapped = [self.mutableObjectsArray cco_concurrentMap:^(id object) {
+        @synchronized (self.mutableObjectsArray) { [self.mutableObjectsArray removeAllObjects]; }
+        return object;
+    }];
+    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform array map concurrent with mutation");
+}
+
+- (void)testArrayFilterConcurrentWithMutation {
+    NSArray *filtered = [self.mutableObjectsArray cco_concurrentFilter:^(id object) {
+        @synchronized (self.mutableObjectsArray) { [self.mutableObjectsArray removeAllObjects]; }
+        return YES;
+    }];
+    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform array filter concurrent with mutation");
+}
+
+- (void)testDictionaryMapConcurrentWithMutation {
+    NSMutableDictionary *mutableObjectsDictionary = [NSMutableDictionary dictionaryWithObjects:self.mutableObjectsArray forKeys:[self.mutableObjectsArray valueForKey:@"description"]];
+    NSDictionary *mapped = [mutableObjectsDictionary cco_concurrentMap:^(id object) {
+        @synchronized (mutableObjectsDictionary) { [mutableObjectsDictionary removeAllObjects]; }
+        return object;
+    }];
+    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform dictionary map concurrent with mutation");
+}
+
+- (void)testDictionaryFilterConcurrentWithMutation {
+    NSMutableDictionary *mutableObjectsDictionary = [NSMutableDictionary dictionaryWithObjects:self.mutableObjectsArray forKeys:[self.mutableObjectsArray valueForKey:@"description"]];
+    NSDictionary *filtered = [mutableObjectsDictionary cco_concurrentFilter:^(id object) {
+        @synchronized (mutableObjectsDictionary) { [mutableObjectsDictionary removeAllObjects]; }
+        return YES;
+    }];
+    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform dictionary filter concurrent with mutation");
+}
+
+- (void)testSetMapConcurrentWithMutation {
+    NSMutableSet *mutableObjectsSet = [NSMutableSet setWithArray:self.mutableObjectsArray];
+    NSSet *mapped = [mutableObjectsSet cco_concurrentMap:^(id object) {
+        @synchronized (mutableObjectsSet) { [mutableObjectsSet removeAllObjects]; }
+        return object;
+    }];
+    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform set map concurrent with mutation");
+}
+
+- (void)testSetFilterConcurrentWithMutation {
+    NSMutableSet *mutableObjectsSet = [NSMutableSet setWithArray:self.mutableObjectsArray];
+    NSSet *filtered = [mutableObjectsSet cco_concurrentFilter:^(id object) {
+        @synchronized (mutableObjectsSet) { [mutableObjectsSet removeAllObjects]; }
+        return YES;
+    }];
+    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform set filter concurrent with mutation");
 }
 
 @end

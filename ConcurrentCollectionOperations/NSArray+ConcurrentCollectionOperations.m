@@ -20,12 +20,18 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
-    __strong id *mapped = (__strong id*)calloc(self.count, sizeof(id));
-    dispatch_apply(self.count, queue, ^(size_t i) {
-        mapped[i] = mapBlock(self[i]);
+    NSArray *snapshot = [self copy];
+
+    void *pointers = calloc(snapshot.count, sizeof(id));
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
+    [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
+    __strong id *mapped = (__strong id*)pointers;
+
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+        mapped[i] = mapBlock(objects[i]);
     });
 
-    NSArray *result = [NSArray arrayWithObjects:mapped count:self.count];
+    NSArray *result = [NSArray arrayWithObjects:mapped count:snapshot.count];
 
     free(mapped);
     return result;
@@ -41,12 +47,14 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
 
-    __unsafe_unretained id *filtered = (__unsafe_unretained id*)calloc(self.count, sizeof(id));
-    [self getObjects:filtered];
+    NSArray *snapshot = [self copy];
+
+    __unsafe_unretained id *filtered = (__unsafe_unretained id*)calloc(snapshot.count, sizeof(id));
+    [snapshot getObjects:filtered range:NSMakeRange(0, snapshot.count)];
 
     __block NSUInteger filteredCount = 0;
-    dispatch_apply(self.count, queue, ^(size_t i) {
-        if (predicateBlock(self[i])) {
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+        if (predicateBlock(filtered[i])) {
             ++filteredCount;
         } else {
             filtered[i] = nil;
@@ -54,7 +62,7 @@
     });
 
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:filteredCount];
-    for (NSUInteger i = 0; i < self.count; ++i) {
+    for (NSUInteger i = 0; i < snapshot.count; ++i) {
         if (filtered[i] != nil) {
             [result addObject:filtered[i]];
         }

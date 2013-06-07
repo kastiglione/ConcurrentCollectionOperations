@@ -20,19 +20,21 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
-    void *values = calloc(self.count, sizeof(id));
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)values;
-    [self getObjects:objects andKeys:keys];
+    NSDictionary *snapshot = [self copy];
 
-    __strong id *mapped = (__strong id *)values;
-    dispatch_apply(self.count, queue, ^(size_t i) {
+    void *pointers = calloc(snapshot.count, sizeof(id));
+    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
+    [snapshot getObjects:objects andKeys:keys];
+
+    __strong id *mapped = (__strong id *)pointers;
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
         mapped[i] = mapBlock(objects[i]);
     });
 
-    NSDictionary *result = [NSDictionary dictionaryWithObjects:mapped forKeys:keys count:self.count];
+    NSDictionary *result = [NSDictionary dictionaryWithObjects:mapped forKeys:keys count:snapshot.count];
 
-    free(objects);
+    free(mapped);
     free(keys);
     return result;
 }
@@ -47,12 +49,14 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
 
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    [self getObjects:objects andKeys:keys];
+    NSDictionary *snapshot = [self copy];
+
+    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    [snapshot getObjects:objects andKeys:keys];
 
     __block NSUInteger filteredCount = 0;
-    dispatch_apply(self.count, queue, ^(size_t i) {
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
         if (predicateBlock(objects[i])) {
             ++filteredCount;
         } else {
@@ -61,7 +65,7 @@
     });
 
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    for (NSUInteger i = 0; i < self.count; ++i) {
+    for (NSUInteger i = 0; i < snapshot.count; ++i) {
         if (objects[i] != nil) {
             result[keys[i]] = objects[i];
         }

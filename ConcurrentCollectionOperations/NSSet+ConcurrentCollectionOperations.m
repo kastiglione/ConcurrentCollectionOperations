@@ -20,18 +20,20 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
-    void *values = calloc(self.count, sizeof(id));
-    CFSetGetValues((__bridge CFSetRef)self, values);
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)values;
-    __strong id *mapped = (__strong id*)values;
+    NSSet *snapshot = [self copy];
 
-    dispatch_apply(self.count, queue, ^(size_t i) {
+    void *pointers = calloc(snapshot.count, sizeof(id));
+    CFSetGetValues((__bridge CFSetRef)snapshot, pointers);
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
+    __strong id *mapped = (__strong id*)pointers;
+
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
         mapped[i] = mapBlock(objects[i]);
     });
 
-    NSSet *result = [NSSet setWithObjects:mapped count:self.count];
+    NSSet *result = [NSSet setWithObjects:mapped count:snapshot.count];
 
-    free(values);
+    free(mapped);
     return result;
 }
 
@@ -45,12 +47,14 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
 
-    void *values = calloc(self.count, sizeof(id));
-    CFSetGetValues((__bridge CFSetRef)self, values);
-    __unsafe_unretained id *filtered = (__unsafe_unretained id *)values;
+    NSSet *snapshot = [self copy];
+
+    void *pointers = calloc(snapshot.count, sizeof(id));
+    CFSetGetValues((__bridge CFSetRef)snapshot, pointers);
+    __unsafe_unretained id *filtered = (__unsafe_unretained id *)pointers;
 
     __block NSUInteger filteredCount = 0;
-    dispatch_apply(self.count, queue, ^(size_t i) {
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
         if (predicateBlock(filtered[i])) {
             ++filteredCount;
         } else {
@@ -59,13 +63,13 @@
     });
 
     NSMutableSet *result = [NSMutableSet setWithCapacity:filteredCount];
-    for (NSUInteger i = 0; i < self.count; ++i) {
+    for (NSUInteger i = 0; i < snapshot.count; ++i) {
         if (filtered[i] != nil) {
             [result addObject:filtered[i]];
         }
     }
 
-    free(values);
+    free(pointers);
     return result;
 }
 
