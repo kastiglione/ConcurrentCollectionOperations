@@ -14,10 +14,12 @@
     NSParameterAssert(mapBlock != nil);
 
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    return [self cco_concurrentWithQueue:queue map:mapBlock];
+    int taskCountLimit = (int)[[NSProcessInfo processInfo] processorCount] * 2;
+
+    return [self cco_concurrentWithQueue:queue taskCountLimit:taskCountLimit map:mapBlock];
 }
 
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
+- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue taskCountLimit:(int)taskCountLimit map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
     NSArray *snapshot = [self copy];
@@ -27,9 +29,15 @@
     [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
     __strong id *mapped = (__strong id*)pointers;
 
+    dispatch_semaphore_t taskLimitSemaphore = dispatch_semaphore_create(taskCountLimit);
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
+        dispatch_semaphore_wait(taskLimitSemaphore, DISPATCH_TIME_FOREVER);
         mapped[i] = mapBlock(objects[i]);
+        dispatch_semaphore_signal(taskLimitSemaphore);
     });
+#if !OS_OBJ_HAVE_OBJC
+    dispatch_release(taskLimitSemaphore);
+#endif
 
     NSArray *result = [NSArray arrayWithObjects:mapped count:snapshot.count];
 
