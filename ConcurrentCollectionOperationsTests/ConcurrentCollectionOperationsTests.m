@@ -79,7 +79,7 @@
         return @(2 * number.unsignedIntegerValue);
     }];
     NSArray *mappedNumbers = [mapped.dictionaryRepresentation.allValues sortedArrayUsingSelector:@selector(compare:)];
-    STAssertEqualObjects(mappedNumbers, self.doubledNumbers, @"Failed to perform dictionary doubling map");
+    STAssertEqualObjects(mappedNumbers, self.doubledNumbers, @"Failed to perform map table doubling map");
 }
 
 - (void)testMapTableOddFilter {
@@ -87,7 +87,7 @@
         return number.unsignedIntegerValue % 2 == 1;
     }];
     NSArray *filteredNumbers = [filtered.dictionaryRepresentation.allValues sortedArrayUsingSelector:@selector(compare:)];
-    STAssertEqualObjects(filteredNumbers, self.oddNumbers, @"Failed to filter dictionary for odds");
+    STAssertEqualObjects(filteredNumbers, self.oddNumbers, @"Failed to filter map table for odds");
 }
 
 #pragma mark - NSSet
