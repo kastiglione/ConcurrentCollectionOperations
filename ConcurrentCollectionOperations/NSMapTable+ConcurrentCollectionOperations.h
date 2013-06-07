@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Internet. All rights reserved.
 //
 
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+
 #import <Foundation/Foundation.h>
 #import "BlockTypedefs.h"
 
@@ -18,3 +20,5 @@
 - (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock;
 
 @end
+
+#endif

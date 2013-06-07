@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Internet. All rights reserved.
 //
 
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+
 #import "NSMapTable+ConcurrentCollectionOperations.h"
 #import <libkern/OSAtomic.h>
 
@@ -68,3 +70,5 @@
 }
 
 @end
+
+#endif
