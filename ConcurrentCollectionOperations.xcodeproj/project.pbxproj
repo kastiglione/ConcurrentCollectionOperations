@@ -38,6 +38,9 @@
 		5588EF4E175C4EF100196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 		5588EF4F175C4EF200196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 		5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; };
+		8436C8271760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 8436C8251760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.h */; };
+		8436C8281760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */; };
+		8436C8291760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,8 @@
 		5588EF29175C4E4000196831 /* ConcurrentCollectionOperations-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ConcurrentCollectionOperations-iOS-Prefix.pch"; path = "ConcurrentCollectionOperations/ConcurrentCollectionOperations-iOS-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		5588EF33175C4E4000196831 /* ConcurrentCollectionOperations-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConcurrentCollectionOperations-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5588EF35175C4E4000196831 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		8436C8251760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMapTable+ConcurrentCollectionOperations.h"; sourceTree = "<group>"; };
+		8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMapTable+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +203,8 @@
 				5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */,
 				5588EF10175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.h */,
 				5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */,
+				8436C8251760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.h */,
+				8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */,
 				5588EF15175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h */,
 				5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */,
 				5588EEE0175BDF8B00196831 /* Supporting Files */,
@@ -247,6 +254,7 @@
 				5588EF17175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.h in Headers */,
 				5588EF1A175C48E700196831 /* ConcurrentCollectionOperations.h in Headers */,
 				5588EF1C175C493B00196831 /* BlockTypedefs.h in Headers */,
+				8436C8271760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +427,7 @@
 				5588EF09175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 				5588EF13175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
 				5588EF18175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
+				8436C8281760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +449,7 @@
 				5588EF4A175C4EE900196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 				5588EF4C175C4EED00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
 				5588EF4E175C4EF100196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
+				8436C8291760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
