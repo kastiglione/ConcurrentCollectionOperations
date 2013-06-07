@@ -53,14 +53,16 @@
         }
     });
 
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:filteredCount];
+    NSMutableArray *temp = [NSMutableArray arrayWithCapacity:filteredCount];
     for (NSUInteger i = 0; i < self.count; ++i) {
         if (filtered[i] != nil) {
-            [result addObject:filtered[i]];
+            [temp addObject:filtered[i]];
         }
     }
 
     free(filtered);
+    
+    NSArray *result = [NSArray arrayWithArray:temp];
     return result;
 }
 

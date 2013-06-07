@@ -58,14 +58,16 @@
         }
     });
 
-    NSMutableSet *result = [NSMutableSet setWithCapacity:filteredCount];
+    NSMutableSet *temp = [NSMutableSet setWithCapacity:filteredCount];
     for (NSUInteger i = 0; i < self.count; ++i) {
         if (filtered[i] != nil) {
-            [result addObject:filtered[i]];
+            [temp addObject:filtered[i]];
         }
     }
 
     free(values);
+    
+    NSSet *result = [NSSet setWithSet:temp];
     return result;
 }
 
