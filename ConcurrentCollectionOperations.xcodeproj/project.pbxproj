@@ -333,7 +333,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = Internet;
+				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = 5588EED0175BDF8B00196831 /* Build configuration list for PBXProject "ConcurrentCollectionOperations" */;
 			compatibilityVersion = "Xcode 3.2";
