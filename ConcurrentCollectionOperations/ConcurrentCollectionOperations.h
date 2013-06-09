@@ -10,3 +10,4 @@
 #import "NSDictionary+ConcurrentCollectionOperations.h"
 #import "NSSet+ConcurrentCollectionOperations.h"
 #import "NSMapTable+ConcurrentCollectionOperations.h"
+#import "NSOrderedSet+ConcurrentCollectionOperations.h"

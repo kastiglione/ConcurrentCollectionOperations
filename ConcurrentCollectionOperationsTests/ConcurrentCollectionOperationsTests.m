@@ -124,6 +124,24 @@ static const NSUInteger kMutableCollectionCount = 10;
     STAssertEqualObjects(filtered, [NSSet setWithArray:self.oddNumbers], @"Failed for filter set for odds");
 }
 
+#pragma mark - NSSet
+
+- (void)testOrderedSetDoublingMap {
+    NSOrderedSet *numbersOrderedSet = [NSOrderedSet orderedSetWithArray:self.numbersArray];
+    NSOrderedSet *mapped = [numbersOrderedSet cco_concurrentMap:^(NSNumber *number) {
+        return @(2 * number.unsignedIntegerValue);
+    }];
+    STAssertEqualObjects(mapped.array, self.doubledNumbers, @"Failed to perform ordered set doubling map");
+}
+
+- (void)testOrderedSetOddFilter {
+    NSOrderedSet *numbersOrderedSet = [NSOrderedSet orderedSetWithArray:self.numbersArray];
+    NSOrderedSet *filtered = [numbersOrderedSet cco_concurrentFilter:^BOOL (NSNumber *number) {
+        return number.unsignedIntegerValue % 2 == 1;
+    }];
+    STAssertEqualObjects(filtered.array, self.oddNumbers, @"Failed for filter ordered set for odds");
+}
+
 #pragma mark - Concurrent with Mutation
 
 - (void)testArrayMapConcurrentWithMutation {
@@ -173,6 +191,24 @@ static const NSUInteger kMutableCollectionCount = 10;
     NSMutableSet *mutableObjectsSet = [NSMutableSet setWithArray:self.mutableObjectsArray];
     NSSet *filtered = [mutableObjectsSet cco_concurrentFilter:^(id object) {
         @synchronized (mutableObjectsSet) { [mutableObjectsSet removeAllObjects]; }
+        return YES;
+    }];
+    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform set filter concurrent with mutation");
+}
+
+- (void)testOrderedSetMapConcurrentWithMutation {
+    NSMutableOrderedSet *mutableObjectsOrderedSet = [NSMutableOrderedSet orderedSetWithArray:self.mutableObjectsArray];
+    NSOrderedSet *mapped = [mutableObjectsOrderedSet cco_concurrentMap:^(id object) {
+        @synchronized (mutableObjectsOrderedSet) { [mutableObjectsOrderedSet removeAllObjects]; }
+        return object;
+    }];
+    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform set map concurrent with mutation");
+}
+
+- (void)testOrderedSetFilterConcurrentWithMutation {
+    NSMutableOrderedSet *mutableObjectsOrderedSet = [NSMutableOrderedSet orderedSetWithArray:self.mutableObjectsArray];
+    NSOrderedSet *filtered = [mutableObjectsOrderedSet cco_concurrentFilter:^(id object) {
+        @synchronized (mutableObjectsOrderedSet) { [mutableObjectsOrderedSet removeAllObjects]; }
         return YES;
     }];
     STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform set filter concurrent with mutation");
