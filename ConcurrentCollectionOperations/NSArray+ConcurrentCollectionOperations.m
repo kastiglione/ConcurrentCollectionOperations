@@ -49,31 +49,28 @@
 
     NSArray *snapshot = [self copy];
 
-    __unsafe_unretained id *objects = (__unsafe_unretained id*)calloc(snapshot.count, sizeof(id));
-    [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
+    __unsafe_unretained id *filtered = (__unsafe_unretained id*)calloc(snapshot.count, sizeof(id));
+    [snapshot getObjects:filtered range:NSMakeRange(0, snapshot.count)];
 
     __block NSUInteger filteredCount = 0;
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        if (predicateBlock(objects[i])) {
+        if (predicateBlock(filtered[i])) {
             ++filteredCount;
         } else {
-            objects[i] = nil;
+            filtered[i] = nil;
         }
     });
 
-    __unsafe_unretained id *filteredObjects = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
-    for (NSUInteger i = 0, j = 0; i < snapshot.count; ++i) {
-        if (objects[i] != nil) {
-            filteredObjects[j] = objects[i];
-            ++j;
+    NSMutableArray *temp = [NSMutableArray arrayWithCapacity:filteredCount];
+    for (NSUInteger i = 0; i < snapshot.count; ++i) {
+        if (filtered[i] != nil) {
+            [temp addObject:filtered[i]];
         }
     }
 
-    NSArray *result = [NSArray arrayWithObjects:filteredObjects count:filteredCount];
+    free(filtered);
 
-    free(filteredObjects);
-    free(objects);
-
+    NSArray *result = [NSArray arrayWithArray:temp];
     return result;
 }
 

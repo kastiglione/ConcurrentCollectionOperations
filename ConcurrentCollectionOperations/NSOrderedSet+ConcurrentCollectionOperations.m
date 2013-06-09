@@ -60,19 +60,16 @@
         }
     });
 
-    __unsafe_unretained id *filteredObjects = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
-    for (NSUInteger i = 0, j = 0; i < snapshot.count; ++i) {
+    NSMutableOrderedSet *temp = [NSMutableOrderedSet orderedSetWithCapacity:filteredCount];
+    for (NSUInteger i = 0; i < snapshot.count; ++i) {
         if (objects[i] != nil) {
-            filteredObjects[j] = objects[i];
-            ++j;
+            [temp addObject:objects[i]];
         }
     }
 
-    NSOrderedSet *result = [NSOrderedSet orderedSetWithObjects:filteredObjects count:filteredCount];
-
-    free(filteredObjects);
     free(objects);
 
+    NSOrderedSet *result = [NSOrderedSet orderedSetWithOrderedSet:temp];
     return result;
 }
 
