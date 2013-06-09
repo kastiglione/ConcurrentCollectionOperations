@@ -7,10 +7,7 @@
 //
 
 #import "ConcurrentCollectionOperationsTests.h"
-#import "NSArray+ConcurrentCollectionOperations.h"
-#import "NSDictionary+ConcurrentCollectionOperations.h"
-#import "NSMapTable+ConcurrentCollectionOperations.h"
-#import "NSSet+ConcurrentCollectionOperations.h"
+#import "ConcurrentCollectionOperations.h"
 
 static const NSUInteger kMutableCollectionCount = 10;
 
