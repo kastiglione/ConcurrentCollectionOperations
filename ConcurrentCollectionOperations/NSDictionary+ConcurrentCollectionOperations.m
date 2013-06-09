@@ -64,15 +64,17 @@
         }
     });
 
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    NSMutableDictionary *temp = [NSMutableDictionary dictionary];
     for (NSUInteger i = 0; i < snapshot.count; ++i) {
         if (objects[i] != nil) {
-            result[keys[i]] = objects[i];
+            temp[keys[i]] = objects[i];
         }
     }
 
     free(objects);
     free(keys);
+
+    NSDictionary *result = [NSDictionary dictionaryWithDictionary:temp];
     return result;
 }
 
