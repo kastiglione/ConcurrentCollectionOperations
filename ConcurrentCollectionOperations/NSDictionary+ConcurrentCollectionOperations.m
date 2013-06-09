@@ -10,14 +10,14 @@
 
 @implementation NSDictionary (ConcurrentCollectionOperations)
 
-- (instancetype)cco_concurrentMap:(CCOMapBlock)mapBlock {
+- (NSDictionary *)cco_concurrentMap:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     return [self cco_concurrentWithQueue:queue map:mapBlock];
 }
 
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
+- (NSDictionary *)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock {
     NSParameterAssert(mapBlock != nil);
 
     NSDictionary *snapshot = [self copy];
@@ -39,14 +39,14 @@
     return result;
 }
 
-- (instancetype)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock {
+- (NSDictionary *)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
 
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     return [self cco_concurrentWithQueue:queue filter:predicateBlock];
 }
 
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
+- (NSDictionary *)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock {
     NSParameterAssert(predicateBlock != nil);
 
     NSDictionary *snapshot = [self copy];

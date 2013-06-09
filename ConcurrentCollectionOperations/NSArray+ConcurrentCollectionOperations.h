@@ -11,10 +11,10 @@
 
 @interface NSArray (ConcurrentCollectionOperations)
 
-- (instancetype)cco_concurrentMap:(CCOMapBlock)mapBlock;
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock;
+- (NSArray *)cco_concurrentMap:(CCOMapBlock)mapBlock;
+- (NSArray *)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock;
 
-- (instancetype)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock;
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock;
+- (NSArray *)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock;
+- (NSArray *)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock;
 
 @end

@@ -13,11 +13,11 @@
 
 @interface NSMapTable (ConcurrentCollectionOperations)
 
-- (instancetype)cco_concurrentMap:(CCOMapBlock)mapBlock;
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock;
+- (NSMapTable *)cco_concurrentMap:(CCOMapBlock)mapBlock;
+- (NSMapTable *)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock;
 
-- (instancetype)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock;
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock;
+- (NSMapTable *)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock;
+- (NSMapTable *)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock;
 
 @end
 

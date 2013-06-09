@@ -11,10 +11,10 @@
 
 @interface NSSet (ConcurrentCollectionOperations)
 
-- (instancetype)cco_concurrentMap:(CCOMapBlock)mapBlock;
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock;
+- (NSSet *)cco_concurrentMap:(CCOMapBlock)mapBlock;
+- (NSSet *)cco_concurrentWithQueue:(dispatch_queue_t)queue map:(CCOMapBlock)mapBlock;
 
-- (instancetype)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock;
-- (instancetype)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock;
+- (NSSet *)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock;
+- (NSSet *)cco_concurrentWithQueue:(dispatch_queue_t)queue filter:(CCOPredicateBlock)predicateBlock;
 
 @end
