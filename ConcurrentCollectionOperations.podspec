@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ConcurrentCollectionOperations"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Concurrent map and filter on NSArray, NSDictionary, NSSet using GCD."
   s.description  = <<-DESC
     This is a set of categories for performing concurrent map and filter
