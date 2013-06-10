@@ -154,7 +154,7 @@ static const NSUInteger kCollectionCount = 100;
 - (void)testArrayMapConcurrentWithMutation {
     NSArray *mapped = [self.mutableObjectsArray cco_concurrentMap:^(id object) {
         @synchronized (self.mutableObjectsArray) { [self.mutableObjectsArray removeAllObjects]; }
-        return object;
+        return [NSObject new];
     }];
     STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform array map concurrent with mutation");
 }
@@ -171,7 +171,7 @@ static const NSUInteger kCollectionCount = 100;
     NSMutableDictionary *mutableObjectsDictionary = [NSMutableDictionary dictionaryWithObjects:self.mutableObjectsArray forKeys:[self.mutableObjectsArray valueForKey:@"description"]];
     NSDictionary *mapped = [mutableObjectsDictionary cco_concurrentMap:^(id object) {
         @synchronized (mutableObjectsDictionary) { [mutableObjectsDictionary removeAllObjects]; }
-        return object;
+        return [NSObject new];
     }];
     STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform dictionary map concurrent with mutation");
 }
@@ -189,7 +189,7 @@ static const NSUInteger kCollectionCount = 100;
     NSMutableSet *mutableObjectsSet = [NSMutableSet setWithArray:self.mutableObjectsArray];
     NSSet *mapped = [mutableObjectsSet cco_concurrentMap:^(id object) {
         @synchronized (mutableObjectsSet) { [mutableObjectsSet removeAllObjects]; }
-        return object;
+        return [NSObject new];
     }];
     STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform set map concurrent with mutation");
 }
@@ -207,7 +207,7 @@ static const NSUInteger kCollectionCount = 100;
     NSMutableOrderedSet *mutableObjectsOrderedSet = [NSMutableOrderedSet orderedSetWithArray:self.mutableObjectsArray];
     NSOrderedSet *mapped = [mutableObjectsOrderedSet cco_concurrentMap:^(id object) {
         @synchronized (mutableObjectsOrderedSet) { [mutableObjectsOrderedSet removeAllObjects]; }
-        return object;
+        return [NSObject new];
     }];
     STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform set map concurrent with mutation");
 }
