@@ -65,17 +65,23 @@
         }
     });
 
-    NSMutableDictionary *temp = [NSMutableDictionary dictionary];
-    for (NSUInteger i = 0; i < snapshot.count; ++i) {
+    __unsafe_unretained id *filteredKeys = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
+    __unsafe_unretained id *filteredObjects = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
+    for (NSUInteger i = 0, j = 0; i < snapshot.count; ++i) {
         if (objects[i] != nil) {
-            temp[keys[i]] = objects[i];
+            filteredKeys[j] = keys[i];
+            filteredObjects[j] = objects[i];
+            ++j;
         }
     }
 
+    NSDictionary *result = [NSDictionary dictionaryWithObjects:filteredObjects forKeys:filteredKeys count:filteredCount];
+
+    free(filteredKeys);
+    free(filteredObjects);
     free(objects);
     free(keys);
 
-    NSDictionary *result = [NSDictionary dictionaryWithDictionary:temp];
     return result;
 }
 

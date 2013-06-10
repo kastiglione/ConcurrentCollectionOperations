@@ -50,28 +50,31 @@
 
     NSArray *snapshot = [self copy];
 
-    __unsafe_unretained id *filtered = (__unsafe_unretained id*)calloc(snapshot.count, sizeof(id));
-    [snapshot getObjects:filtered range:NSMakeRange(0, snapshot.count)];
+    __unsafe_unretained id *objects = (__unsafe_unretained id*)calloc(snapshot.count, sizeof(id));
+    [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
 
     __block volatile int32_t filteredCount = 0;
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        if (predicateBlock(filtered[i])) {
+        if (predicateBlock(objects[i])) {
             OSAtomicIncrement32(&filteredCount);
         } else {
-            filtered[i] = nil;
+            objects[i] = nil;
         }
     });
 
-    NSMutableArray *temp = [NSMutableArray arrayWithCapacity:filteredCount];
-    for (NSUInteger i = 0; i < snapshot.count; ++i) {
-        if (filtered[i] != nil) {
-            [temp addObject:filtered[i]];
+    __unsafe_unretained id *filteredObjects = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
+    for (NSUInteger i = 0, j = 0; i < snapshot.count; ++i) {
+        if (objects[i] != nil) {
+            filteredObjects[j] = objects[i];
+            ++j;
         }
     }
 
-    free(filtered);
+    NSArray *result = [NSArray arrayWithObjects:filteredObjects count:filteredCount];
 
-    NSArray *result = [NSArray arrayWithArray:temp];
+    free(filteredObjects);
+    free(objects);
+
     return result;
 }
 
