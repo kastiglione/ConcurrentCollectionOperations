@@ -3,7 +3,6 @@
 //  ConcurrentCollectionOperations
 //
 //  Created by Robert Widmann on 6/5/13.
-//  Copyright (c) 2013 Internet. All rights reserved.
 //
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
