@@ -9,7 +9,8 @@ Pod::Spec.new do |s|
 
     Concurrency is achieved using Grand Central Dispatch's (GCD) dispatch_apply.
     By default, operations are run on the default priority global concurrent
-    queue. The operations can be performed on any concurrent queue.
+    queue. The operations can be performed on any concurrent queue. This library
+    provides similar functionality to `pmap` as found in other languages.
   DESC
   s.homepage     = "https://github.com/kastiglione/ConcurrentCollectionOperations"
   s.license      = 'MIT'
