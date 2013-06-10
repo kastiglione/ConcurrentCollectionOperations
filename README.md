@@ -36,7 +36,6 @@ Filtering even numbers out of a dictionary:
 
 ### TODO
 
-1. Write header docs.
 1. Add benchmark target.
 1. Write heavier/stressing tests.
 
