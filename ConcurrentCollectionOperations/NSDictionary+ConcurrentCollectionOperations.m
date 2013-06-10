@@ -3,7 +3,7 @@
 //  ConcurrentCollectionOperations
 //
 //  Created by Dave Lee on 2013-06-02.
-//  Copyright (c) 2013 David Lee. All rights reserved.
+//  Copyright (c) 2013 David Lee, Joshua Ballanco. All rights reserved.
 //
 
 #import "NSDictionary+ConcurrentCollectionOperations.h"
@@ -23,14 +23,12 @@
 
     NSDictionary *snapshot = [self copy];
 
-    void *pointers = calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
-    [snapshot getObjects:objects andKeys:keys];
+    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
+    __unsafe_unretained id *mapped = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
 
-    __strong id *mapped = (__strong id *)pointers;
-    dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        mapped[i] = mapBlock(objects[i]);
+    [snapshot getObjects:mapped andKeys:keys];
+    dispatch_apply(self.count, queue, ^(size_t i) {
+        mapped[i] = mapBlock(mapped[i]);
     });
 
     NSDictionary *result = [NSDictionary dictionaryWithObjects:mapped forKeys:keys count:snapshot.count];
@@ -52,32 +50,29 @@
 
     NSDictionary *snapshot = [self copy];
 
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
+    __strong id *filteredObjects = (__strong id *)calloc(self.count, sizeof(id));
     [snapshot getObjects:objects andKeys:keys];
 
-    __block volatile int32_t filteredCount = 0;
-    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+    dispatch_apply(self.count, queue, ^(size_t i) {
         if (predicateBlock(objects[i])) {
-            OSAtomicIncrement32(&filteredCount);
-        } else {
-            objects[i] = nil;
+            filteredObjects[i] = objects[i];
         }
     });
 
-    __unsafe_unretained id *filteredKeys = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
-    __unsafe_unretained id *filteredObjects = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
-    for (NSUInteger i = 0, j = 0; i < snapshot.count; ++i) {
-        if (objects[i] != nil) {
-            filteredKeys[j] = keys[i];
-            filteredObjects[j] = objects[i];
-            ++j;
+    NSUInteger cursor = 0, nextFree = 0;
+    while(cursor < snapshot.count) {
+        if(filteredObjects[cursor]) {
+            keys[nextFree] = keys[cursor];
+            filteredObjects[nextFree++] = filteredObjects[cursor++];
+        } else {
+            cursor++;
         }
     }
 
-    NSDictionary *result = [NSDictionary dictionaryWithObjects:filteredObjects forKeys:filteredKeys count:filteredCount];
+    NSDictionary *result = [NSDictionary dictionaryWithObjects:filteredObjects forKeys:keys count:nextFree];
 
-    free(filteredKeys);
     free(filteredObjects);
     free(objects);
     free(keys);
