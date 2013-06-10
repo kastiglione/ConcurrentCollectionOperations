@@ -23,11 +23,11 @@
 
     NSDictionary *snapshot = [self copy];
 
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    __unsafe_unretained id *mapped = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
+    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    __unsafe_unretained id *mapped = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
 
     [snapshot getObjects:mapped andKeys:keys];
-    dispatch_apply(self.count, queue, ^(size_t i) {
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
         mapped[i] = mapBlock(mapped[i]);
     });
 
@@ -50,8 +50,8 @@
 
     NSDictionary *snapshot = [self copy];
 
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
+    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
     [snapshot getObjects:objects andKeys:keys];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
