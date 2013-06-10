@@ -31,7 +31,7 @@
     NSArray *keys = NSAllMapTableKeys(self);
     NSArray *objects = NSAllMapTableValues(self);
 	
-    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+    dispatch_apply(self.count, queue, ^(size_t i) {
         OSSpinLockLock(&spinlock);
         [result setObject:mapBlock(objects[i]) forKey:keys[i]];
         OSSpinLockUnlock(&spinlock);
@@ -58,7 +58,7 @@
     NSArray *keys = NSAllMapTableKeys(self);
     NSMutableArray *objects = NSAllMapTableValues(self).mutableCopy;
 
-    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+    dispatch_apply(self.count, queue, ^(size_t i) {
         if (predicateBlock(objects[i])) {
             OSSpinLockLock(&spinlock);
             [result setObject:objects[i] forKey:keys[i]];
