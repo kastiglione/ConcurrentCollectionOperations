@@ -52,28 +52,26 @@
 
     __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
     __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(self.count, sizeof(id));
-    __strong id *filteredObjects = (__strong id *)calloc(self.count, sizeof(id));
     [snapshot getObjects:objects andKeys:keys];
 
-    dispatch_apply(self.count, queue, ^(size_t i) {
-        if (predicateBlock(objects[i])) {
-            filteredObjects[i] = objects[i];
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+        if (!predicateBlock(objects[i])) {
+            objects[i] = nil;
         }
     });
 
     NSUInteger cursor = 0, nextFree = 0;
     while(cursor < snapshot.count) {
-        if(filteredObjects[cursor]) {
+        if(objects[cursor]) {
             keys[nextFree] = keys[cursor];
-            filteredObjects[nextFree++] = filteredObjects[cursor++];
+            objects[nextFree++] = objects[cursor++];
         } else {
             cursor++;
         }
     }
 
-    NSDictionary *result = [NSDictionary dictionaryWithObjects:filteredObjects forKeys:keys count:nextFree];
+    NSDictionary *result = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:nextFree];
 
-    free(filteredObjects);
     free(objects);
     free(keys);
 
