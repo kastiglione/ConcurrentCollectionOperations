@@ -3,7 +3,7 @@
 //  ConcurrentCollectionOperations
 //
 //  Created by Dave Lee on 2013-06-02.
-//  Copyright (c) 2013 David Lee. All rights reserved.
+//  Copyright (c) 2013 David Lee, Joshua Ballanco. All rights reserved.
 //
 
 #import "NSSet+ConcurrentCollectionOperations.h"
@@ -34,7 +34,7 @@
 
     NSSet *result = [NSSet setWithObjects:mapped count:snapshot.count];
 
-    free(mapped);
+    free(pointers);
     return result;
 }
 
@@ -54,28 +54,25 @@
     CFSetGetValues((__bridge CFSetRef)snapshot, pointers);
     __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
 
-    __block volatile int32_t filteredCount = 0;
+
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        if (predicateBlock(objects[i])) {
-            OSAtomicIncrement32(&filteredCount);
-        } else {
+        if (!predicateBlock(objects[i])) {
             objects[i] = nil;
         }
     });
 
-    __unsafe_unretained id *filteredObjects = (__unsafe_unretained id *)calloc(filteredCount, sizeof(id));
-    for (NSUInteger i = 0, j = 0; i < snapshot.count; ++i) {
-        if (objects[i] != nil) {
-            filteredObjects[j] = objects[i];
-            ++j;
+    NSUInteger cursor = 0, nextFree = 0;
+    while(cursor < snapshot.count) {
+        if(objects[cursor]) {
+            objects[nextFree++] = objects[cursor++];
+        } else {
+            cursor++;
         }
     }
 
-    NSSet *result = [NSSet setWithObjects:filteredObjects count:filteredCount];
+    NSSet *result = [NSSet setWithObjects:objects count:nextFree];
 
-    free(filteredObjects);
-    free(objects);
-
+    free(pointers);
     return result;
 }
 
