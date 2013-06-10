@@ -6,6 +6,7 @@
 //
 
 #import "NSOrderedSet+ConcurrentCollectionOperations.h"
+#import <libkern/OSAtomic.h>
 
 @implementation NSOrderedSet (ConcurrentCollectionOperations)
 
@@ -51,10 +52,10 @@
     __unsafe_unretained id *objects = (__unsafe_unretained id*)calloc(snapshot.count, sizeof(id));
     [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
 
-    __block NSUInteger filteredCount = 0;
+    __block volatile int32_t filteredCount = 0;
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
         if (predicateBlock(objects[i])) {
-            ++filteredCount;
+            OSAtomicIncrement32(&filteredCount);
         } else {
             objects[i] = nil;
         }

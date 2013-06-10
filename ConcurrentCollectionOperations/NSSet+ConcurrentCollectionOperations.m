@@ -7,6 +7,7 @@
 //
 
 #import "NSSet+ConcurrentCollectionOperations.h"
+#import <libkern/OSAtomic.h>
 
 @implementation NSSet (ConcurrentCollectionOperations)
 
@@ -53,10 +54,10 @@
     CFSetGetValues((__bridge CFSetRef)snapshot, pointers);
     __unsafe_unretained id *filtered = (__unsafe_unretained id *)pointers;
 
-    __block NSUInteger filteredCount = 0;
+    __block volatile int32_t filteredCount = 0;
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
         if (predicateBlock(filtered[i])) {
-            ++filteredCount;
+            OSAtomicIncrement32(&filteredCount);
         } else {
             filtered[i] = nil;
         }
