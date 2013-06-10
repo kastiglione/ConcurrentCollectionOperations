@@ -97,7 +97,6 @@
 		5588EEEF175BDF8B00196831 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5588EEF7175BDF8B00196831 /* ConcurrentCollectionOperationsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConcurrentCollectionOperationsTests-Info.plist"; sourceTree = "<group>"; };
 		5588EEF9175BDF8B00196831 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5588EEFB175BDF8B00196831 /* ConcurrentCollectionOperationsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcurrentCollectionOperationsTests.h; sourceTree = "<group>"; };
 		5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcurrentCollectionOperationsTests.m; sourceTree = "<group>"; };
 		5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ConcurrentCollectionOperations.h"; sourceTree = "<group>"; };
 		5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
@@ -237,7 +236,6 @@
 		5588EEF5175BDF8B00196831 /* ConcurrentCollectionOperationsTests */ = {
 			isa = PBXGroup;
 			children = (
-				5588EEFB175BDF8B00196831 /* ConcurrentCollectionOperationsTests.h */,
 				5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */,
 				5588EEF6175BDF8B00196831 /* Supporting Files */,
 			);

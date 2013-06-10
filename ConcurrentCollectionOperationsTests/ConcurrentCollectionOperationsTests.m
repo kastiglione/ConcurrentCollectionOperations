@@ -6,22 +6,23 @@
 //  Copyright (c) 2013 David Lee. All rights reserved.
 //
 
-#import "ConcurrentCollectionOperationsTests.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "ConcurrentCollectionOperations.h"
 
-static const NSUInteger kMutableCollectionCount = 10;
+static const NSUInteger kCollectionCount = 100;
 
-@interface ConcurrentCollectionOperationsTests ()
-@property (strong, nonatomic) NSArray *numbersArray;
-@property (strong, nonatomic) NSDictionary *numbersDictionary;
-@property (strong, nonatomic) NSSet *numbersSet;
+@interface ConcurrentCollectionOperationsTests : SenTestCase
 
-@property (strong, nonatomic) NSArray *doubledNumbers;
-@property (strong, nonatomic) NSArray *oddNumbers;
+@property (strong, nonatomic) NSMutableArray *numbersArray;
+@property (strong, nonatomic) NSMutableDictionary *numbersDictionary;
+@property (strong, nonatomic) NSMutableSet *numbersSet;
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
 @property (strong, nonatomic) NSMapTable *numbersMapTable;
 #endif
+
+@property (strong, nonatomic) NSMutableArray *doubledNumbers;
+@property (strong, nonatomic) NSMutableArray *oddNumbers;
 
 @property (strong, nonatomic) NSMutableArray *mutableObjectsArray;
 
@@ -30,24 +31,31 @@ static const NSUInteger kMutableCollectionCount = 10;
 @implementation ConcurrentCollectionOperationsTests
 
 - (void)setUp {
-    self.numbersArray = @[ @0, @1, @2, @3, @4, @5, @6, @7, @8, @9 ];
-    self.numbersDictionary = [NSDictionary dictionaryWithObjects:self.numbersArray forKeys:self.numbersArray];
+    self.numbersArray = [NSMutableArray arrayWithCapacity:kCollectionCount];
+    self.numbersDictionary = [NSMutableDictionary dictionaryWithCapacity:kCollectionCount];
+    self.numbersSet = [NSMutableSet setWithCapacity:kCollectionCount];
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
 	NSPointerFunctionsOptions mapTableOptions = (NSPointerFunctionsStrongMemory | NSPointerFunctionsObjectPersonality);
 	self.numbersMapTable = [NSMapTable mapTableWithKeyOptions:mapTableOptions valueOptions:mapTableOptions];
-	for (NSNumber *number in self.numbersArray) {
-		[self.numbersMapTable setObject:number forKey:number];
-	}
 #endif
 
-    self.numbersSet = [NSSet setWithArray:self.numbersArray];
+    self.doubledNumbers = [NSMutableArray arrayWithCapacity:kCollectionCount];
+    self.oddNumbers = [NSMutableArray arrayWithCapacity:(kCollectionCount / 2)];
 
-    self.doubledNumbers = @[ @0, @2, @4, @6, @8, @10, @12, @14, @16, @18 ];
-    self.oddNumbers = @[ @1, @3, @5, @7, @9 ];
+    self.mutableObjectsArray = [NSMutableArray arrayWithCapacity:kCollectionCount];
 
-    self.mutableObjectsArray = [NSMutableArray arrayWithCapacity:kMutableCollectionCount];
-    for (NSUInteger i = 0; i < kMutableCollectionCount; ++i) {
+    for (NSUInteger i = 0; i < kCollectionCount; ++i) {
+        [self.numbersArray addObject:@(i)];
+        [self.numbersDictionary setObject:@(i) forKey:@(i)];
+        [self.numbersSet addObject:@(i)];
+
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+        [self.numbersMapTable setObject:@(i) forKey:@(i)];
+#endif
+        [self.doubledNumbers addObject:@(2 * i)];
+        if (i % 2 == 1) [self.oddNumbers addObject:@(i)];
+
         [self.mutableObjectsArray addObject:[NSObject new]];
     }
 }
@@ -149,7 +157,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (self.mutableObjectsArray) { [self.mutableObjectsArray removeAllObjects]; }
         return object;
     }];
-    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform array map concurrent with mutation");
+    STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform array map concurrent with mutation");
 }
 
 - (void)testArrayFilterConcurrentWithMutation {
@@ -157,7 +165,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (self.mutableObjectsArray) { [self.mutableObjectsArray removeAllObjects]; }
         return YES;
     }];
-    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform array filter concurrent with mutation");
+    STAssertEquals(filtered.count, kCollectionCount, @"Failed to perform array filter concurrent with mutation");
 }
 
 - (void)testDictionaryMapConcurrentWithMutation {
@@ -166,7 +174,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (mutableObjectsDictionary) { [mutableObjectsDictionary removeAllObjects]; }
         return object;
     }];
-    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform dictionary map concurrent with mutation");
+    STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform dictionary map concurrent with mutation");
 }
 
 - (void)testDictionaryFilterConcurrentWithMutation {
@@ -175,7 +183,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (mutableObjectsDictionary) { [mutableObjectsDictionary removeAllObjects]; }
         return YES;
     }];
-    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform dictionary filter concurrent with mutation");
+    STAssertEquals(filtered.count, kCollectionCount, @"Failed to perform dictionary filter concurrent with mutation");
 }
 
 - (void)testSetMapConcurrentWithMutation {
@@ -184,7 +192,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (mutableObjectsSet) { [mutableObjectsSet removeAllObjects]; }
         return object;
     }];
-    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform set map concurrent with mutation");
+    STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform set map concurrent with mutation");
 }
 
 - (void)testSetFilterConcurrentWithMutation {
@@ -193,7 +201,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (mutableObjectsSet) { [mutableObjectsSet removeAllObjects]; }
         return YES;
     }];
-    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform set filter concurrent with mutation");
+    STAssertEquals(filtered.count, kCollectionCount, @"Failed to perform set filter concurrent with mutation");
 }
 
 - (void)testOrderedSetMapConcurrentWithMutation {
@@ -202,7 +210,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (mutableObjectsOrderedSet) { [mutableObjectsOrderedSet removeAllObjects]; }
         return object;
     }];
-    STAssertEquals(mapped.count, kMutableCollectionCount, @"Failed to perform set map concurrent with mutation");
+    STAssertEquals(mapped.count, kCollectionCount, @"Failed to perform set map concurrent with mutation");
 }
 
 - (void)testOrderedSetFilterConcurrentWithMutation {
@@ -211,7 +219,7 @@ static const NSUInteger kMutableCollectionCount = 10;
         @synchronized (mutableObjectsOrderedSet) { [mutableObjectsOrderedSet removeAllObjects]; }
         return YES;
     }];
-    STAssertEquals(filtered.count, kMutableCollectionCount, @"Failed to perform set filter concurrent with mutation");
+    STAssertEquals(filtered.count, kCollectionCount, @"Failed to perform set filter concurrent with mutation");
 }
 
 @end
