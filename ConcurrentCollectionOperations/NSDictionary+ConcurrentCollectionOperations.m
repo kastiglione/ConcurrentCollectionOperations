@@ -22,21 +22,22 @@
 
     NSDictionary *snapshot = [self copy];
 
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));;
+    id *keys = calloc(snapshot.count, sizeof(id));
+    id *objects = calloc(snapshot.count, sizeof(id));;
     [snapshot getObjects:objects andKeys:keys];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        objects[i] = (__bridge id)CFBridgingRetain(mapBlock(objects[i]));
+        objects[i] = [mapBlock(objects[i]) retain];
     });
 
     NSDictionary *result = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:snapshot.count];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        CFBridgingRelease((__bridge CFTypeRef)objects[i]);
+        [objects[i] release];
     });
     free(objects);
     free(keys);
+    [snapshot release];
 
     return result;
 }
@@ -53,8 +54,8 @@
 
     NSDictionary *snapshot = [self copy];
 
-    __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    id *keys = calloc(snapshot.count, sizeof(id));
+    id *objects = calloc(snapshot.count, sizeof(id));
     [snapshot getObjects:objects andKeys:keys];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
@@ -77,6 +78,7 @@
 
     free(objects);
     free(keys);
+    [snapshot release];
 
     return result;
 }

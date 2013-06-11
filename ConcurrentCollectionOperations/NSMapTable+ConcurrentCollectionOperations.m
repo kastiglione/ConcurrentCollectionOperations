@@ -36,7 +36,7 @@
         OSSpinLockUnlock(&spinlock);
     });
 	
-    return result;
+    return [result autorelease];
 }
 
 - (NSMapTable *)cco_concurrentFilter:(CCOPredicateBlock)predicateBlock {
@@ -65,7 +65,7 @@
         }
     });
 
-    return result;
+    return [result autorelease];
 }
 
 @end

@@ -22,19 +22,20 @@
 
     NSArray *snapshot = [self copy];
 
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
+    id *objects = calloc(snapshot.count, sizeof(id));
     [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        objects[i] = (__bridge id)CFBridgingRetain(mapBlock(objects[i]));
+        objects[i] = [mapBlock(objects[i]) retain];
     });
 
     NSArray *result = [NSArray arrayWithObjects:objects count:snapshot.count];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        CFBridgingRelease((__bridge CFTypeRef)objects[i]);
+        [objects[i] release];
     });
     free(objects);
+    [snapshot release];
 
     return result;
 }
@@ -51,7 +52,7 @@
 
     NSArray *snapshot = [self copy];
 
-    __unsafe_unretained id *objects = (__unsafe_unretained id*)calloc(snapshot.count, sizeof(id));
+    id *objects = calloc(snapshot.count, sizeof(id));
     [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
@@ -72,6 +73,8 @@
     NSArray *result = [NSArray arrayWithObjects:objects count:nextFree];
 
     free(objects);
+    [snapshot release];
+
     return result;
 }
 

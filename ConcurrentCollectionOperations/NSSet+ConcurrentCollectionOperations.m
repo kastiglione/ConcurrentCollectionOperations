@@ -22,19 +22,20 @@
 
     NSSet *snapshot = [self copy];
 
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));;
-    CFSetGetValues((__bridge CFSetRef)snapshot, (void *)objects);
+    id *objects = calloc(snapshot.count, sizeof(id));;
+    CFSetGetValues((CFSetRef)snapshot, (void *)objects);
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        objects[i] = (__bridge id)CFBridgingRetain(mapBlock(objects[i]));
+        objects[i] = [mapBlock(objects[i]) retain];
     });
 
     NSSet *result = [NSSet setWithObjects:objects count:snapshot.count];
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        CFBridgingRelease((__bridge CFTypeRef)objects[i]);
+        [objects[i] release];
     });
     free(objects);
+    [snapshot release];
 
     return result;
 }
@@ -51,10 +52,8 @@
 
     NSSet *snapshot = [self copy];
 
-    void *pointers = calloc(snapshot.count, sizeof(id));
-    CFSetGetValues((__bridge CFSetRef)snapshot, pointers);
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
-
+    id *objects = calloc(snapshot.count, sizeof(id));
+    CFSetGetValues((CFSetRef)snapshot, (void *)objects);
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
         if (!predicateBlock(objects[i])) {
@@ -73,7 +72,9 @@
 
     NSSet *result = [NSSet setWithObjects:objects count:nextFree];
 
-    free(pointers);
+    free(objects);
+    [snapshot release];
+
     return result;
 }
 

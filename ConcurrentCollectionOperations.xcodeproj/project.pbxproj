@@ -16,15 +16,15 @@
 		552267FE17652D1300108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */; };
 		552267FF17652D1500108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */; };
 		5545FD64175E9F9000AC003B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5545FD63175E9F9000AC003B /* LICENSE.txt */; };
-		5581C89417678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */; };
-		5581C89517678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */; };
+		5581C89417678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		5581C89517678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		5588EEDA175BDF8B00196831 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED9175BDF8B00196831 /* Cocoa.framework */; };
 		5588EEE4175BDF8B00196831 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588EEE2175BDF8B00196831 /* InfoPlist.strings */; };
 		5588EEF0175BDF8B00196831 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EEEF175BDF8B00196831 /* SenTestingKit.framework */; };
 		5588EEF1175BDF8B00196831 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED9175BDF8B00196831 /* Cocoa.framework */; };
 		5588EEF4175BDF8B00196831 /* ConcurrentCollectionOperations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */; };
 		5588EEFA175BDF8B00196831 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588EEF8175BDF8B00196831 /* InfoPlist.strings */; };
-		5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; };
+		5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		5588EF08175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 5588EF06175BE14500196831 /* NSArray+ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5588EF09175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
 		5588EF0A175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF07175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m */; };
@@ -47,7 +47,7 @@
 		5588EF4D175C4EEE00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF11175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m */; };
 		5588EF4E175C4EF100196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
 		5588EF4F175C4EF200196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EF16175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m */; };
-		5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; };
+		5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8436C8271760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 8436C8251760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8436C8281760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */; };
 /* End PBXBuildFile section */
@@ -452,12 +452,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
 				5588EF0A175BE14500196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 				5588EF14175BED7F00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
 				5588EF19175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
 				552267FB1765146000108850 /* NSOrderedSet+ConcurrentCollectionOperations.m in Sources */,
 				552267FD17652D0500108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */,
+				5588EEFD175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
 				5581C89417678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,9 +481,9 @@
 				5588EF4B175C4EEA00196831 /* NSArray+ConcurrentCollectionOperations.m in Sources */,
 				5588EF4D175C4EEE00196831 /* NSDictionary+ConcurrentCollectionOperations.m in Sources */,
 				5588EF4F175C4EF200196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
-				5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
 				552267FC1765146000108850 /* NSOrderedSet+ConcurrentCollectionOperations.m in Sources */,
 				552267FF17652D1500108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */,
+				5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
 				5581C89517678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,7 +530,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -564,7 +564,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
