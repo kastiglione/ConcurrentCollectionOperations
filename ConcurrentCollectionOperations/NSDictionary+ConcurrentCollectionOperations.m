@@ -23,17 +23,20 @@
 
     NSDictionary *snapshot = [self copy];
 
+    void *pointers = calloc(snapshot.count, sizeof(id));
     __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
-
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
     [snapshot getObjects:objects andKeys:keys];
+
+    __strong id *mapped = (__strong id *)pointers;
+
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        objects[i] = mapBlock(objects[i]);
+        mapped[i] = mapBlock(objects[i]);
     });
 
-    NSDictionary *result = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:snapshot.count];
+    NSDictionary *result = [NSDictionary dictionaryWithObjects:mapped forKeys:keys count:snapshot.count];
 
-    free(objects);
+    free(pointers);
     free(keys);
     return result;
 }
