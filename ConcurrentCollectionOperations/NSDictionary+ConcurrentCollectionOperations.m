@@ -22,21 +22,22 @@
 
     NSDictionary *snapshot = [self copy];
 
-    void *pointers = calloc(snapshot.count, sizeof(id));
     __unsafe_unretained id *keys = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));;
     [snapshot getObjects:objects andKeys:keys];
 
-    __strong id *mapped = (__strong id *)pointers;
-
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        mapped[i] = mapBlock(objects[i]);
+        objects[i] = (__bridge id)CFBridgingRetain(mapBlock(objects[i]));
     });
 
-    NSDictionary *result = [NSDictionary dictionaryWithObjects:mapped forKeys:keys count:snapshot.count];
+    NSDictionary *result = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:snapshot.count];
 
-    free(pointers);
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+        CFBridgingRelease((__bridge CFTypeRef)objects[i]);
+    });
+    free(objects);
     free(keys);
+
     return result;
 }
 

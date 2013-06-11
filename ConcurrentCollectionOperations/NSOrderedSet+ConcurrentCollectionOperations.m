@@ -22,18 +22,20 @@
 
     NSOrderedSet *snapshot = [self copy];
 
-    void *pointers = calloc(snapshot.count, sizeof(id));
-    __unsafe_unretained id *objects = (__unsafe_unretained id *)pointers;
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)calloc(snapshot.count, sizeof(id));
     [snapshot getObjects:objects range:NSMakeRange(0, snapshot.count)];
-    __strong id *mapped = (__strong id*)pointers;
 
     dispatch_apply(snapshot.count, queue, ^(size_t i) {
-        mapped[i] = mapBlock(objects[i]);
+        objects[i] = (__bridge id)CFBridgingRetain(mapBlock(objects[i]));
     });
 
-    NSOrderedSet *result = [NSOrderedSet orderedSetWithObjects:mapped count:snapshot.count];
+    NSOrderedSet *result = [NSOrderedSet orderedSetWithObjects:objects count:snapshot.count];
 
-    free(mapped);
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+        CFBridgingRelease((__bridge CFTypeRef)objects[i]);
+    });
+    free(objects);
+
     return result;
 }
 
