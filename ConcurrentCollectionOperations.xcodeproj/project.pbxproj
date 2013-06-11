@@ -16,6 +16,8 @@
 		552267FE17652D1300108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */; };
 		552267FF17652D1500108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436C8261760289300835D7A /* NSMapTable+ConcurrentCollectionOperations.m */; };
 		5545FD64175E9F9000AC003B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5545FD63175E9F9000AC003B /* LICENSE.txt */; };
+		5581C89417678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */; };
+		5581C89517678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */; };
 		5588EEDA175BDF8B00196831 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EED9175BDF8B00196831 /* Cocoa.framework */; };
 		5588EEE4175BDF8B00196831 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588EEE2175BDF8B00196831 /* InfoPlist.strings */; };
 		5588EEF0175BDF8B00196831 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5588EEEF175BDF8B00196831 /* SenTestingKit.framework */; };
@@ -84,6 +86,8 @@
 		552267F7176510D800108850 /* NSOrderedSet+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOrderedSet+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 		5545FD63175E9F9000AC003B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5545FD65175EA22800AC003B /* ConcurrentCollectionOperations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ConcurrentCollectionOperations.podspec; sourceTree = "<group>"; };
+		5581C89217678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentCollectionOperationsBenchmarks.h; sourceTree = "<group>"; };
+		5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentCollectionOperationsBenchmarks.m; sourceTree = "<group>"; };
 		5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConcurrentCollectionOperations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5588EED9175BDF8B00196831 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5588EEDC175BDF8B00196831 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -236,6 +240,8 @@
 		5588EEF5175BDF8B00196831 /* ConcurrentCollectionOperationsTests */ = {
 			isa = PBXGroup;
 			children = (
+				5581C89217678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.h */,
+				5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */,
 				5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */,
 				5588EEF6175BDF8B00196831 /* Supporting Files */,
 			);
@@ -452,6 +458,7 @@
 				5588EF19175C3F6700196831 /* NSSet+ConcurrentCollectionOperations.m in Sources */,
 				552267FB1765146000108850 /* NSOrderedSet+ConcurrentCollectionOperations.m in Sources */,
 				552267FD17652D0500108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */,
+				5581C89417678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +484,7 @@
 				5588EF50175C4EF600196831 /* ConcurrentCollectionOperationsTests.m in Sources */,
 				552267FC1765146000108850 /* NSOrderedSet+ConcurrentCollectionOperations.m in Sources */,
 				552267FF17652D1500108850 /* NSMapTable+ConcurrentCollectionOperations.m in Sources */,
+				5581C89517678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
