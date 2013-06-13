@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Internet. All rights reserved.
 //
 
-#import "ConcurrentCollectionOperationsBenchmarks.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "NSArray+ConcurrentCollectionOperations.h"
 #import "NSDictionary+ConcurrentCollectionOperations.h"
 #import "NSSet+ConcurrentCollectionOperations.h"
 #import <objc/runtime.h>
 
-@interface ConcurrentCollectionOperationsBenchmarks()
+@interface ConcurrentCollectionOperationsBenchmarks : SenTestCase
     @property(strong, nonatomic) NSArray *numbersArray;
     @property(strong, nonatomic) NSDictionary *numbersDictionary;
     @property(strong, nonatomic) NSSet *numbersSet;

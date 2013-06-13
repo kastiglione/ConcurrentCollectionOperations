@@ -86,7 +86,6 @@
 		552267F7176510D800108850 /* NSOrderedSet+ConcurrentCollectionOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOrderedSet+ConcurrentCollectionOperations.m"; sourceTree = "<group>"; };
 		5545FD63175E9F9000AC003B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5545FD65175EA22800AC003B /* ConcurrentCollectionOperations.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ConcurrentCollectionOperations.podspec; sourceTree = "<group>"; };
-		5581C89217678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentCollectionOperationsBenchmarks.h; sourceTree = "<group>"; };
 		5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentCollectionOperationsBenchmarks.m; sourceTree = "<group>"; };
 		5588EED6175BDF8B00196831 /* ConcurrentCollectionOperations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConcurrentCollectionOperations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5588EED9175BDF8B00196831 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -240,7 +239,6 @@
 		5588EEF5175BDF8B00196831 /* ConcurrentCollectionOperationsTests */ = {
 			isa = PBXGroup;
 			children = (
-				5581C89217678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.h */,
 				5581C89317678D3D001E475B /* ConcurrentCollectionOperationsBenchmarks.m */,
 				5588EEFC175BDF8B00196831 /* ConcurrentCollectionOperationsTests.m */,
 				5588EEF6175BDF8B00196831 /* Supporting Files */,
