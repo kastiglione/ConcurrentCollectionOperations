@@ -23,7 +23,7 @@ static NSTimeInterval totalRuntime = (NSTimeInterval)0;
 - (void)setUp {
     NSUInteger const SIZE = 1000;
 
-    __strong id *tmp = (__strong id *)calloc(SIZE, sizeof(id));
+    __unsafe_unretained id *tmp = (__unsafe_unretained id *)calloc(SIZE, sizeof(id));
     for (NSUInteger i = 0; i < SIZE; i++) {
         tmp[i] = [NSNumber numberWithUnsignedInteger:i];
     }
