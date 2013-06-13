@@ -14,6 +14,11 @@ This library is based off code and ideas from [@alloy](https://github.com/alloy)
 and [@seanlilmateus](https://github.com/seanlilmateus). It has been created
 because we were unaware of an existing implementation.
 
+### Installation
+
+Install via [CocoaPods](http://cocoapods.org/), or by adding the Xcode project
+to your project.
+
 ### Examples
 
 These examples are taken from the [tests](https://github.com/kastiglione/ConcurrentCollectionOperations/blob/master/ConcurrentCollectionOperationsTests/ConcurrentCollectionOperationsTests.m).
@@ -34,9 +39,15 @@ Filtering even numbers out of a dictionary:
     }];
 ```
 
+### Contributors
+
+ConcurrentCollectionOperations has been made by [@alloy](https://github.com/alloy),
+[@CodaFi](https://github.com/CodaFi), [@jballanc](https://github.com/jballanc),
+[@kastiglione](https://github.com/kastiglione), and
+[@seanlilmateus](https://github.com/seanlilmateus).
+
 ### TODO
 
-1. Add benchmark target.
 1. Write heavier/stressing tests.
 
 ### License
