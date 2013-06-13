@@ -3,19 +3,17 @@
 //  ConcurrentCollectionOperations
 //
 //  Created by Josh Ballanco on 6/9/13.
-//  Copyright (c) 2013 Internet. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "NSArray+ConcurrentCollectionOperations.h"
-#import "NSDictionary+ConcurrentCollectionOperations.h"
-#import "NSSet+ConcurrentCollectionOperations.h"
+#import "ConcurrentCollectionOperations.h"
 #import <objc/runtime.h>
 
 @interface ConcurrentCollectionOperationsBenchmarks : SenTestCase
     @property(strong, nonatomic) NSArray *numbersArray;
     @property(strong, nonatomic) NSDictionary *numbersDictionary;
     @property(strong, nonatomic) NSSet *numbersSet;
+    @property(strong, nonatomic) NSOrderedSet *numbersOrderedSet;
 @end
 
 @implementation ConcurrentCollectionOperationsBenchmarks
@@ -34,6 +32,7 @@ static NSTimeInterval totalRuntime = (NSTimeInterval)0;
     self.numbersDictionary = [NSDictionary dictionaryWithObjects:self.numbersArray
                                                          forKeys:self.numbersArray];
     self.numbersSet = [NSSet setWithArray:self.numbersArray];
+    self.numbersOrderedSet = [NSOrderedSet orderedSetWithArray:self.numbersArray];
 
     free(tmp);
 }
@@ -130,6 +129,24 @@ static NSTimeInterval totalRuntime = (NSTimeInterval)0;
 - (void)benchmarkSetFilter {
     [self runBenchmark:@"Set Filter" withBlock:^{
         [self.numbersSet cco_concurrentFilter:^BOOL (NSNumber *number) {
+            return number.unsignedIntegerValue % 2 == 1;
+        }];
+    }];
+}
+
+#pragma mark - NSOrderedSet
+
+- (void)benchmarkOrderedSetMap {
+    [self runBenchmark:@"Ordered Set Map" withBlock:^{
+        [self.numbersOrderedSet cco_concurrentMap:^(NSNumber *number) {
+            return @(2 * number.unsignedIntegerValue);
+        }];
+    }];
+}
+
+- (void)benchmarkOrderedSetFilter {
+    [self runBenchmark:@"Ordered Set Filter" withBlock:^{
+        [self.numbersOrderedSet cco_concurrentFilter:^BOOL (NSNumber *number) {
             return number.unsignedIntegerValue % 2 == 1;
         }];
     }];
