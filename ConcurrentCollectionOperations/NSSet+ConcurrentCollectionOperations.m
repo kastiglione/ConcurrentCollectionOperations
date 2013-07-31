@@ -31,12 +31,10 @@
 
     NSSet *result = [NSSet setWithObjects:objects count:snapshot.count];
 
-    dispatch_async(queue, ^{
-        dispatch_apply(snapshot.count, queue, ^(size_t i) {
-            [objects[i] release];
-        });
-        free(objects);
+    dispatch_apply(snapshot.count, queue, ^(size_t i) {
+        [objects[i] release];
     });
+    free(objects);
     [snapshot release];
 
     return result;
