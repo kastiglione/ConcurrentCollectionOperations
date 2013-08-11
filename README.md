@@ -26,17 +26,17 @@ These examples are taken from the [tests](https://github.com/kastiglione/Concurr
 Doubling the values of an array:
 
 ```objc
-    NSArray *doubled = [numbersArray cco_concurrentMap:^(NSNumber *number) {
-        return @(2 * number.unsignedIntegerValue);
-    }];
+NSArray *doubled = [numbersArray cco_concurrentMap:^(NSNumber *number) {
+    return @(2 * number.unsignedIntegerValue);
+}];
 ```
 
 Filtering even numbers out of a dictionary:
 
 ```objc
-    NSDictionary *filtered = [numbersDictionary cco_concurrentFilter:^BOOL (NSNumber *number) {
-        return number.unsignedIntegerValue % 2 == 1;
-    }];
+NSDictionary *filtered = [numbersDictionary cco_concurrentFilter:^BOOL (NSNumber *number) {
+    return number.unsignedIntegerValue % 2 == 1;
+}];
 ```
 
 ### Contributors
