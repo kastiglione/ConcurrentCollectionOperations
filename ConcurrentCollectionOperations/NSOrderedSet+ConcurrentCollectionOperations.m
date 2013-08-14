@@ -62,8 +62,8 @@
     });
 
     NSUInteger cursor = 0, nextFree = 0;
-    while(cursor < snapshot.count) {
-        if(objects[cursor]) {
+    while (cursor < snapshot.count) {
+        if (objects[cursor]) {
             objects[nextFree++] = objects[cursor++];
         } else {
             cursor++;

@@ -65,13 +65,13 @@ static NSTimeInterval totalRuntime = (NSTimeInterval)0;
     do {
         method = methods[--methodCount];
         methodName = method_getName(method);
-        if(!strncmp("benchmark", sel_getName(methodName), 9)) {
+        if (!strncmp("benchmark", sel_getName(methodName), 9)) {
             methodSig = [NSMethodSignature signatureWithObjCTypes:method_getTypeEncoding(method)];
             invocation = [NSInvocation invocationWithMethodSignature:methodSig];
             [invocation setSelector:methodName];
             [invocations addObject:invocation];
         }
-    } while(methodCount);
+    } while (methodCount);
 
     return invocations;
 }
