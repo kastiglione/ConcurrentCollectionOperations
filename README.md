@@ -1,9 +1,8 @@
 ## Concurrent Collection Operations
 
-This is a set of categories for performing concurrent map and filter operations
-on Foundation data structures, currently supported are `NSArray`,
-`NSDictionary`, `NSSet`, `NSOrderedSet`, and `NSMapTable` (currently supported
-on OS X only).
+A set of categories for performing concurrent map and filter operations on
+Foundation data structures. `NSArray`, `NSDictionary`, `NSSet`, `NSOrderedSet`,
+and `NSMapTable` (OS X) are currently supported.
 
 Concurrency is achieved using Grand Central Dispatch's `dispatch_apply`. By
 default, operations are run on the default priority global concurrent queue
@@ -11,8 +10,7 @@ default, operations are run on the default priority global concurrent queue
 concurrent queue, see the category header files.
 
 This library is based off code and ideas from [@alloy](https://github.com/alloy)
-and [@seanlilmateus](https://github.com/seanlilmateus). It has been created
-because we were unaware of an existing implementation.
+and [@seanlilmateus](https://github.com/seanlilmateus).
 
 ### Installation
 
