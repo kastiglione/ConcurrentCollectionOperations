@@ -9,6 +9,12 @@ default, operations are run on the default priority global concurrent queue
 (`DISPATCH_QUEUE_PRIORITY_DEFAULT`). The operations can be performed on any
 concurrent queue, see the category header files.
 
+Please note that using this code could actually result in slower performance.
+For example, if a map or filter operation uses up a large amount of memory,
+then performing it concurrently could cause memory thrashing. Currently, this
+API does not offer a way to limit the amount of concurrency, but doing so
+explicitly with `dispatch_semaphore` is straight forward.
+
 This library is based off code and ideas from [@alloy](https://github.com/alloy)
 and [@seanlilmateus](https://github.com/seanlilmateus).
 
