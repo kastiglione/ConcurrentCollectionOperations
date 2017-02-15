@@ -6,7 +6,6 @@
 //
 
 #import "NSDictionary+ConcurrentCollectionOperations.h"
-#import <libkern/OSAtomic.h>
 
 @implementation NSDictionary (ConcurrentCollectionOperations)
 

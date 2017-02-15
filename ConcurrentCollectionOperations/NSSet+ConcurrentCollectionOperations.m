@@ -6,7 +6,6 @@
 //
 
 #import "NSSet+ConcurrentCollectionOperations.h"
-#import <libkern/OSAtomic.h>
 
 @implementation NSSet (ConcurrentCollectionOperations)
 
