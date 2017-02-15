@@ -6,7 +6,6 @@
 //
 
 #import "NSArray+ConcurrentCollectionOperations.h"
-#import <libkern/OSAtomic.h>
 
 @implementation NSArray (ConcurrentCollectionOperations)
 

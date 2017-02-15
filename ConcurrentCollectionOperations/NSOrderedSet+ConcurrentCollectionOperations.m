@@ -6,7 +6,6 @@
 //
 
 #import "NSOrderedSet+ConcurrentCollectionOperations.h"
-#import <libkern/OSAtomic.h>
 
 @implementation NSOrderedSet (ConcurrentCollectionOperations)
 
